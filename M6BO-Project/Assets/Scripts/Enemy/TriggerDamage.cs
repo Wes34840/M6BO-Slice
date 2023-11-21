@@ -14,7 +14,8 @@ public class TriggerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hits.Contains(other)) return;
+        if (hits.Contains(other) || other.CompareTag("TriggerBox")) return;
+       
         other.GetComponent<EntityStats>().health -= weaponStats.damage;
         hits.Add(other);
     }
