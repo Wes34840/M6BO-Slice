@@ -6,6 +6,7 @@ public class HeavyComboScript : MonoBehaviour
 {
     private Animator animator;
     private bool HeavyCombo = false;
+    private bool isHeavyAttacking;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class HeavyComboScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             HeavyCombo = true;
+            
         }
 
         HeavyCombos(HeavyCombo);
@@ -24,12 +26,18 @@ public class HeavyComboScript : MonoBehaviour
 
     public void AnimationStarts()
     {
-        HeavyCombo = false;
+        HeavyCombo = true;
+        isHeavyAttacking= true;
     }
 
     private void HeavyCombos(bool value)
     {
         animator.SetBool("HeavyCombo", value);
+    }
+
+    private void HeavyAttackingEnds()
+    {
+        isHeavyAttacking = false;
     }
 }
 
