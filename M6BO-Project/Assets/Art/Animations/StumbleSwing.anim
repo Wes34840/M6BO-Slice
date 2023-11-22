@@ -107247,6 +107247,13 @@ AnimationClip:
   - time: 0
     functionName: AnimationStarts
     data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.4833333
+    functionName: HeavyAttackingEnds
+    data: 
     objectReferenceParameter: {fileID: 11500000, guid: de3f81eab4ea4fb47b06edada1a6b2f8,
       type: 3}
     floatParameter: 0
