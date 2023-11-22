@@ -5,11 +5,6 @@ using UnityEngine;
 public class ComboScript : MonoBehaviour
 {
     private Animator animator;
-    private float cooldown;
-    private float lastClicked;
-    int currentInt;
-
-    private string[] animations = new string[] { "LightAttack1", "LightAttack2", "LightAttack3" };
     private bool shouldGoNextCombo = false;
 
     void Start()
