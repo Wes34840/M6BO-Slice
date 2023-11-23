@@ -29,21 +29,18 @@ public class ComboScript : MonoBehaviour
         ShouldGoNextCombo(shouldGoNextCombo);
         HeavyCombos(HeavyCombo);
         Debug.Log(isAttacking);
-        
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && shouldGoNextCombo == true || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && HeavyCombo == true)
+        {
+            shouldGoNextCombo= false;
+            HeavyCombo= false;
+        }   
     }
  
 
     private void HeavyCombos(bool value)
     {
         animator.SetBool("HeavyCombo", value);
-    }
-
-    public void AnimationStarted()
-    {
-        isAttacking= true;
-        shouldGoNextCombo = false;
-        HeavyCombo= false;
-        
     }
 
     private void ShouldGoNextCombo(bool value)
@@ -53,10 +50,23 @@ public class ComboScript : MonoBehaviour
 
     }
 
-    private void AttackingEnds()
+    public void AnimationStarted()
+    {
+        isAttacking = true;
+        shouldGoNextCombo = false;
+        HeavyCombo = false;
+
+    }
+    public void AttackingEnds()
     {
         isAttacking= false;
+        
+
     }
+
+    
+
+    
 }
 
     
