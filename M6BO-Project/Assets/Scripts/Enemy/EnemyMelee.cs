@@ -7,10 +7,6 @@ public class EnemyMelee : MonoBehaviour
 {
     public bool cooldown;
     public Animator anim;
-    private void Start()
-    {
-
-    }
     private void OnTriggerStay(Collider other)
     {
         if (other.transform == transform.parent) return;
@@ -33,4 +29,5 @@ public class EnemyMelee : MonoBehaviour
         cooldown = false;
         Debug.Log(GetComponentInParent<NavMeshAgent>().enabled);
     }
+
 }
