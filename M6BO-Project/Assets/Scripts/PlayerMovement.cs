@@ -19,5 +19,4 @@ public class PlayerMovement : MonoBehaviour
         Vector3 horizontalInput = ctx.ReadValue<Vector3>();
         rb.velocity = horizontalInput * playerStats.movementSpeed;
     }
-
 }
