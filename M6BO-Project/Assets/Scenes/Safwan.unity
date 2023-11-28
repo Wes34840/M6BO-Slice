@@ -491,6 +491,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3f81eab4ea4fb47b06edada1a6b2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1580278224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580278213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df64e7f39df06af41991f3f0ae1da3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllers: []
+  weapons: []
 --- !u!1001 &1934990124
 PrefabInstance:
   m_ObjectHideFlags: 0
