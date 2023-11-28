@@ -6,7 +6,6 @@ public class TriggerDamage : MonoBehaviour
 {
     private List<Collider> hits = new List<Collider>();
     private WeaponStats weaponStats;
-    // Start is called before the first frame update
     void Start()
     {
         weaponStats = GetComponent<WeaponStats>();
@@ -14,8 +13,10 @@ public class TriggerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hits.Contains(other)) return;
-        other.GetComponent<EntityStats>().health -= weaponStats.damage;
-        hits.Add(other);
+        if (hits.Contains(other) || other.CompareTag("TriggerBox")) return;
+       
+        //other.GetComponent<EntityStats>().health -= weaponStats.damage;
+        //hits.Add(other);
     }
+
 }
