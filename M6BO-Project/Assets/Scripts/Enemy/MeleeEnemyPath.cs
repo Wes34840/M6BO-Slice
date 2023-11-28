@@ -4,7 +4,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPath : MonoBehaviour
+public class MeleeEnemyPath : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     EntityStats stats;
@@ -50,7 +50,7 @@ public class EnemyPath : MonoBehaviour
 
         if (aggroTimer <= 0)
         {
-            fov.viewAngle = 210;
+            fov.viewAngle = 190;
         }
     }
 
