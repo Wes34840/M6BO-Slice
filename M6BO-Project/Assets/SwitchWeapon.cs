@@ -13,7 +13,7 @@ public class SwitchWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            weapons
+           
         }
     }
 }

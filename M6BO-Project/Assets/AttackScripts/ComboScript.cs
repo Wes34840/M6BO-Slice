@@ -6,8 +6,9 @@ public class ComboScript : MonoBehaviour
 {
     private Animator animator;
     private bool shouldGoNextCombo = false;
-    private bool isAttacking;
+    internal bool isAttacking;
     private bool HeavyCombo = false;
+    public HitDetection hitD;
    
 
     void Start()
@@ -60,7 +61,8 @@ public class ComboScript : MonoBehaviour
     public void AttackingEnds()
     {
         isAttacking= false;
-        
+        hitD.hits.Clear();
+        Debug.Log("bolts");
 
     }
 

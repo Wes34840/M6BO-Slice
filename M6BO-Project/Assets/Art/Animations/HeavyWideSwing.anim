@@ -111314,7 +111314,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.13333334
+  - time: 0.23333333
     functionName: AnimationStarted
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394,
@@ -111322,7 +111322,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.95
+  - time: 2.6833334
     functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394,
