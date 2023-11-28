@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private EntityStats playerStats;
     private Rigidbody rb;
-    
-    // Start is called before the first frame update
     void Start()
     {
         playerStats = GetComponent<EntityStats>();
@@ -21,4 +19,5 @@ public class PlayerMovement : MonoBehaviour
         Vector3 horizontalInput = ctx.ReadValue<Vector3>();
         rb.velocity = horizontalInput * playerStats.movementSpeed;
     }
+
 }
