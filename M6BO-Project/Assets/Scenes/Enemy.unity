@@ -998,5 +998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2179090415973114006, guid: 14293b71ee8fc6a43a2bf56300a72517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14293b71ee8fc6a43a2bf56300a72517, type: 3}
