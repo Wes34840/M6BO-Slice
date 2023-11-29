@@ -27,7 +27,6 @@ public class EnemyParentAnimScript : MonoBehaviour
     public void StartLunge()
     {
         Vector3 dir = (agent.steeringTarget - transform.position).normalized;
-        Debug.Log(dir);
         lungeScript.GetLungeDirection(dir);
 
         lungeScript.isLunging = true;

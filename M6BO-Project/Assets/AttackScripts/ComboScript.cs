@@ -18,8 +18,8 @@ public class ComboScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
-        { 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             shouldGoNextCombo = true;
         }
         if (Input.GetKeyDown(KeyCode.Q))
@@ -29,7 +29,7 @@ public class ComboScript : MonoBehaviour
         }
         ShouldGoNextCombo(shouldGoNextCombo);
         HeavyCombos(HeavyCombo);
-        Debug.Log(isAttacking);
+        
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && shouldGoNextCombo == true || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && HeavyCombo == true)
         {
@@ -47,12 +47,12 @@ public class ComboScript : MonoBehaviour
     private void ShouldGoNextCombo(bool value)
     {
         animator.SetBool("ShouldGoNextCombo", value);
-        
-
     }
 
     public void AnimationStarted()
     {
+        if (HeavyCombo) SetDamage(20);
+        else SetDamage(10);
         isAttacking = true;
         shouldGoNextCombo = false;
         HeavyCombo = false;
@@ -62,8 +62,12 @@ public class ComboScript : MonoBehaviour
     {
         isAttacking= false;
         hitD.hits.Clear();
-        Debug.Log("bolts");
 
+    }
+
+    public void SetDamage(int damage)
+    {
+        hitD.gameObject.GetComponent<WeaponStats>().damage = damage;
     }
 
     

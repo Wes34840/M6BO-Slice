@@ -6,15 +6,20 @@ public class HitDetection : MonoBehaviour
 {
     public ComboScript combo;
     public List<Collider>hits= new List<Collider>();
+    private float enemyHealth;
+    private float enemyHealthMax;
 
-
+    private void Start()
+    {
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(combo.isAttacking && other.CompareTag("Enemy") && !hits.Contains(other))
+        if(combo.isAttacking && other.CompareTag("HitBox") && !hits.Contains(other))
         {
             hits.Add(other);
-            Debug.Log("nuts");
+            other.GetComponentInParent<EntityStats>().health -= GetComponent<WeaponStats>().damage;
         }
     }
 
