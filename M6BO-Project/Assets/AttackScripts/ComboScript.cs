@@ -9,6 +9,7 @@ public class ComboScript : MonoBehaviour
     internal bool isAttacking;
     private bool HeavyCombo = false;
     public HitDetection hitD;
+    public SwitchWeapon canSwap;
    
 
     void Start()
@@ -56,12 +57,14 @@ public class ComboScript : MonoBehaviour
         isAttacking = true;
         shouldGoNextCombo = false;
         HeavyCombo = false;
+        canSwap.CanSwitch = false;
 
     }
     public void AttackingEnds()
     {
         isAttacking= false;
         hitD.hits.Clear();
+        canSwap.CanSwitch = true;
 
     }
 
