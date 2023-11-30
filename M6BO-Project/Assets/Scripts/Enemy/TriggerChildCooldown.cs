@@ -6,7 +6,7 @@ public class TriggerChildCooldown : MonoBehaviour
 { 
     public void startCooldown()
     {
-        StartCoroutine(GetComponentInChildren<EnemyMelee>().waitForCooldown());
+        StartCoroutine(GetComponentInChildren<EnemyMeleeAttack>().waitForCooldown());
     }
 
 }

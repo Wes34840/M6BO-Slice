@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMelee : MonoBehaviour
+public class EnemyMeleeAttack : MonoBehaviour
 {
     public bool cooldown;
     public Animator anim;
