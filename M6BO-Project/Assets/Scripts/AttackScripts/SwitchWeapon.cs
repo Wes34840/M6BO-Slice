@@ -26,6 +26,7 @@ public class SwitchWeapon : MonoBehaviour
             sword.SetActive(false);
             weapons.SetLayerWeight(0, 0);
             weapons.SetLayerWeight(1, 1);
+
             Debug.Log(weapons.GetLayerIndex("Sword"));
 
             
