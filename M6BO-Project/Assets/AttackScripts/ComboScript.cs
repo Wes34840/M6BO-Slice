@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboScript : MonoBehaviour
 {
-    private Animator animator;
+    internal Animator animator;
     private bool shouldGoNextCombo = false;
     internal bool isAttacking;
     private bool HeavyCombo = false;
