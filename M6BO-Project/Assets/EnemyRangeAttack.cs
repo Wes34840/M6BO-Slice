@@ -6,20 +6,10 @@ public class EnemyRangeAttack : MonoBehaviour
 {
     public GameObject prefab;
     public bool onCooldown;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public Transform firingPoint;
     public void ShootProjectile(Transform target)
     {
-        GameObject proj = Instantiate(prefab, transform.position, Quaternion.identity);
+        GameObject proj = Instantiate(prefab, firingPoint.position, Quaternion.identity);
         proj.GetComponent<CollisionDamage>().parentColl = GetComponentInChildren<Collider>();
         proj.GetComponent<Rigidbody>().velocity = GetProjectileVelocity(target);
         StartCoroutine(WaitForCooldown(5));
@@ -27,7 +17,7 @@ public class EnemyRangeAttack : MonoBehaviour
     private Vector3 GetProjectileVelocity(Transform target)
     {
         Vector3 direction = (target.position - transform.position);
-        return new Vector3(direction.x * 10, direction.y * 5, direction.z * 10);
+        return new Vector3(direction.x * 2, (direction.y + 1f) * 1.2f, direction.z * 2);
     }
 
     private IEnumerator WaitForCooldown(float timer)
