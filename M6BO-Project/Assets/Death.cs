@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
@@ -19,6 +20,14 @@ public class Death : MonoBehaviour
         {
             combo.animator.SetBool("IsDead", true);
             combo.GetComponent<ComboScript>().enabled = false;
+            StartCoroutine(Delay());
+
         }
+    }
+
+    IEnumerator Delay()
+    {
+       yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("GameOver");
     }
 }
