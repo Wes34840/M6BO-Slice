@@ -27,7 +27,6 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         cooldown = false;
-     
     }
 
 }
