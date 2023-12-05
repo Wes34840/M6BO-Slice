@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComboScript : MonoBehaviour
@@ -10,7 +8,7 @@ public class ComboScript : MonoBehaviour
     private bool HeavyCombo = false;
     public HitDetection hitD;
     public SwitchWeapon canSwap;
-   
+
 
     void Start()
     {
@@ -30,15 +28,15 @@ public class ComboScript : MonoBehaviour
         }
         ShouldGoNextCombo(shouldGoNextCombo);
         HeavyCombos(HeavyCombo);
-        
+
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && shouldGoNextCombo == true || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && HeavyCombo == true)
         {
-            shouldGoNextCombo= false;
-            HeavyCombo= false;
-        }   
+            shouldGoNextCombo = false;
+            HeavyCombo = false;
+        }
     }
- 
+
 
     private void HeavyCombos(bool value)
     {
@@ -62,7 +60,7 @@ public class ComboScript : MonoBehaviour
     }
     public void AttackingEnds()
     {
-        isAttacking= false;
+        isAttacking = false;
         hitD.hits.Clear();
         canSwap.CanSwitch = true;
 
@@ -73,10 +71,9 @@ public class ComboScript : MonoBehaviour
         hitD.gameObject.GetComponent<WeaponStats>().damage = damage;
     }
 
-    
 
-    
+
+
 }
 
-    
-    
+

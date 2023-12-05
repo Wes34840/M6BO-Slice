@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +8,14 @@ public class Death : MonoBehaviour
     public ComboScript combo;
     void Start()
     {
-        stats= GetComponent<EntityStats>();
-        combo= GetComponent<ComboScript>();
+        stats = GetComponent<EntityStats>();
+        combo = GetComponent<ComboScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(stats.health <= 0)
+        if (stats.health <= 0)
         {
             combo.animator.SetBool("IsDead", true);
             combo.GetComponent<ComboScript>().enabled = false;
@@ -27,7 +26,7 @@ public class Death : MonoBehaviour
 
     IEnumerator Delay()
     {
-       yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("GameOver");
     }
 }

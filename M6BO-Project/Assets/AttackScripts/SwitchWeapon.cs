@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwitchWeapon : MonoBehaviour
@@ -11,11 +7,11 @@ public class SwitchWeapon : MonoBehaviour
     public GameObject sword;
     public bool CanSwitch;
     private float delay;
-    
-    
+
+
     private void Start()
     {
-         weapons= GetComponentInParent<Animator>();  
+        weapons = GetComponentInParent<Animator>();
     }
     private void Update()
     {
@@ -29,8 +25,8 @@ public class SwitchWeapon : MonoBehaviour
 
             Debug.Log(weapons.GetLayerIndex("Sword"));
 
-            
-            
+
+
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) && CanSwitch == true)
         {

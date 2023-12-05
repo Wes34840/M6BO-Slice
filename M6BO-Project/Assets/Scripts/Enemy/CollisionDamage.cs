@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
@@ -22,7 +20,7 @@ public class CollisionDamage : MonoBehaviour
         }
         Debug.Log($"WAUEHUUEUUEHAEHAUEAUEAUHEAEHAE {collision.gameObject.name}");
         //collision.gameObject.GetComponent<EntityStats>().health = -stats.damage;
-        
+
         hasHit = true;
     }
 

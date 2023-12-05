@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerChildCooldown : MonoBehaviour
-{ 
+{
     public TriggerDamage dam;
     public void startCooldown()
     {
