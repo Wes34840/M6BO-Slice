@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 7161704629696279359}
   - component: {fileID: 9013352081459955582}
   - component: {fileID: 4229560716695132670}
+  - component: {fileID: 3596279720548306552}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   movementSpeed: 3
-  rotSpeed: 4
+  rotSpeed: 3
 --- !u!114 &4229560716695132670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +243,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLunging: 0
+--- !u!114 &3596279720548306552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624304234995326959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  maxPoise: 10
 --- !u!1 &647745947077331853
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +890,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3875008279480840046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0

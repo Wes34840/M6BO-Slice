@@ -15,8 +15,15 @@ public class TriggerDamage : MonoBehaviour
         if (hits.Contains(other) || other.CompareTag("TriggerBox")) return;
 
         other.GetComponentInParent<EntityStats>().health -= weaponStats.damage;
-        Debug.Log(other.GetComponentInParent<EntityStats>().health);
+        other.GetComponentInParent<EntityPoise>().CurrentPoise -= weaponStats.poiseDamage;
+        StartCoroutine(other.GetComponentInParent<EntityPoise>().RegenDelay());
         hits.Add(other);
+        StartCoroutine(ClearList());
     }
 
+    private IEnumerator ClearList()
+    {
+        yield return new WaitForSeconds(1);
+        hits.Clear();
+    }
 }

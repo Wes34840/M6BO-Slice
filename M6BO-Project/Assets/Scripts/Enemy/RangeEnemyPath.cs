@@ -7,7 +7,7 @@ public class RangeEnemyPath : PathingAI
     public bool isFleeing = false;
     public GameObject playNode, runNode;
     public EnemyRangeAttack attack;
-    private void Start()
+    public override void Start()
     {
         GetAll();
         attack = GetComponent<EnemyRangeAttack>();
