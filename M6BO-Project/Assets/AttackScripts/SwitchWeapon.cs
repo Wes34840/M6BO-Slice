@@ -1,10 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwitchWeapon : MonoBehaviour
 {
     public Animator weapons;
     public GameObject halberd;
     public GameObject sword;
+    public GameObject currentWeapon;
     public bool CanSwitch;
     private float delay;
 
@@ -20,6 +21,7 @@ public class SwitchWeapon : MonoBehaviour
         {
             halberd.SetActive(true);
             sword.SetActive(false);
+            currentWeapon = halberd;
             weapons.SetLayerWeight(0, 0);
             weapons.SetLayerWeight(1, 1);
 
@@ -32,10 +34,12 @@ public class SwitchWeapon : MonoBehaviour
         {
             halberd.SetActive(false);
             sword.SetActive(true);
+            currentWeapon = sword;
             weapons.SetLayerWeight(0, 1);
             weapons.SetLayerWeight(1, 0);
             Debug.Log(weapons.GetLayerIndex("Halberd"));
 
         }
     }
+
 }

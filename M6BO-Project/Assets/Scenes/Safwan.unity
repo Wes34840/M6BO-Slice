@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMelee
       objectReference: {fileID: 0}
+    - target: {fileID: 624304234995326959, guid: 33f60edb44b5fd7488063093e4b19609,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1152200275225331490, guid: 33f60edb44b5fd7488063093e4b19609,
         type: 3}
       propertyPath: damage
@@ -626,30 +631,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7892294721207087341, guid: 27f7a8c931a35f446bac22d57b93fa7e,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
---- !u!1 &1447678554503382750 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2523232819522121482, guid: 27f7a8c931a35f446bac22d57b93fa7e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1447678554503382749}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1447678554503382756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447678554503382750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58318643bd79e7543aed65c1e13ac287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combo: {fileID: 0}
