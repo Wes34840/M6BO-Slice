@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System;
 using UnityEngine;
 
 public class EnemyFOV : MonoBehaviour
@@ -26,7 +23,7 @@ public class EnemyFOV : MonoBehaviour
             }
         }
         return null;
-        
+
     }
 
     public Vector3 DirFromAngle(float angle, bool isGlobal)
@@ -35,8 +32,8 @@ public class EnemyFOV : MonoBehaviour
         {
             angle += transform.eulerAngles.y;
         }
-        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle* Mathf.Deg2Rad));
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
-    
+
 
 }

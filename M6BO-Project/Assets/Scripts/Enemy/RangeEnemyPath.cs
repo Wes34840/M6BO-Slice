@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditor.Experimental.GraphView;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class RangeEnemyPath : PathingAI
 {
@@ -12,7 +7,7 @@ public class RangeEnemyPath : PathingAI
     public bool isFleeing = false;
     public GameObject playNode, runNode;
     public EnemyRangeAttack attack;
-    private void Start()
+    public override void Start()
     {
         GetAll();
         attack = GetComponent<EnemyRangeAttack>();
