@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
@@ -25,7 +25,6 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         cooldown = false;
-
     }
 
 }

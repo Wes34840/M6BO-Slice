@@ -1,10 +1,9 @@
-﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerDamage : MonoBehaviour
 {
-    private List<Collider> hits = new List<Collider>();
+    public List<Collider> hits = new List<Collider>();
     private WeaponStats weaponStats;
     void Start()
     {
