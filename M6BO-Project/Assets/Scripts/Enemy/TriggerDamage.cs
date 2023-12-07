@@ -1,6 +1,6 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class TriggerDamage : MonoBehaviour
 {
     public List<Collider> hits = new List<Collider>();
@@ -14,9 +14,7 @@ public class TriggerDamage : MonoBehaviour
     {
         if (hits.Contains(other) || other.CompareTag("TriggerBox")) return;
 
-        other.GetComponentInParent<EntityStats>().health -= weaponStats.damage;
-        other.GetComponentInParent<EntityPoise>().CurrentPoise -= weaponStats.poiseDamage;
-        StartCoroutine(other.GetComponentInParent<EntityPoise>().RegenDelay());
+        other.GetComponent<EntityHitbox>().TakeDamage(weaponStats);
         hits.Add(other);
         StartCoroutine(ClearList());
     }

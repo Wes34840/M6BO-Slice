@@ -85,7 +85,7 @@ AnimatorStateMachine:
     m_Position: {x: 173, y: 237, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -159149991864118042}
-    m_Position: {x: 420, y: 170, z: 0}
+    m_Position: {x: 420, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2203660577445652151}
     m_Position: {x: 321.42856, y: 6.25, z: 0}
@@ -141,13 +141,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Stun
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
