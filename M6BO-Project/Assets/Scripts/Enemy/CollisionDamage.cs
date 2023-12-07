@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+using UnityEngine;
 public class CollisionDamage : MonoBehaviour
 {
     private bool hasHit;
@@ -10,12 +8,19 @@ public class CollisionDamage : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<WeaponStats>();
+        Physics.IgnoreCollision(parentColl, GetComponent<BoxCollider>());
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasHit || collision.gameObject.tag != "HitBox" || collision.gameObject.GetComponent<Collider>() == parentColl) Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        Debug.Log($"EHEEURRUEHRUHERHEUERUEUREURUERUERUR {collision.gameObject.name}");
+        if (hasHit || collision.gameObject.tag != "HitBox")
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<BoxCollider>());
+            return;
+        }
+        Debug.Log($"WAUEHUUEUUEHAEHAUEAUEAUHEAEHAE {collision.gameObject.name}");
         //collision.gameObject.GetComponent<EntityStats>().health = -stats.damage;
-        Debug.Log("hit");
+
         hasHit = true;
     }
 

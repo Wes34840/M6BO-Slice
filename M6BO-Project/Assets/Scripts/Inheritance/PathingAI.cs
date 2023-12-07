@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -71,9 +69,10 @@ public class PathingAI : MonoBehaviour
     }
     public Quaternion UpdateDirection(Vector3 target)
     {
-        Vector3 lookDir = (target - transform.position).normalized;
-        if (lookDir.magnitude == 0) return Quaternion.identity;
-        Quaternion lookRot = Quaternion.LookRotation(new Vector3(lookDir.x, 0, lookDir.z));
+        Vector3 lookDir = target - transform.position;
+        lookDir = new Vector3(lookDir.x, 0, lookDir.z);
+        if (lookDir.magnitude <= 0.1f && lookDir.magnitude >= -0.1f) return Quaternion.identity;
+        Quaternion lookRot = Quaternion.LookRotation(lookDir);
         return Quaternion.Lerp(model.rotation, lookRot, Time.deltaTime * stats.rotSpeed);
     }
 }

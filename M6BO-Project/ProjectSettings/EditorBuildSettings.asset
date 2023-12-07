@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Environment.unity
     guid: 17c34fbfbf1f8754c9d602061a2fd1d0
+  - enabled: 1
+    path: Assets/Scenes/Safwan.unity
+    guid: cfb0e6251f86baf438b7c3cf24f8b188
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 74534ba825ff2db408dec6d5c2a83efd
   m_configObjects: {}

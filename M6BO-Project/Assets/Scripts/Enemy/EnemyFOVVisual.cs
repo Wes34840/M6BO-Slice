@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor (typeof(EnemyFOV))]
+
 public class EnemyFOVVisual : Editor
 {
     private void OnSceneGUI()
