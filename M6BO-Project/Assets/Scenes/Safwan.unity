@@ -190,15 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMelee
       objectReference: {fileID: 0}
-    - target: {fileID: 624304234995326959, guid: 33f60edb44b5fd7488063093e4b19609,
+    - target: {fileID: 9013352081459955582, guid: 33f60edb44b5fd7488063093e4b19609,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1152200275225331490, guid: 33f60edb44b5fd7488063093e4b19609,
-        type: 3}
-      propertyPath: damage
-      value: 50
+      propertyPath: health
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f60edb44b5fd7488063093e4b19609, type: 3}

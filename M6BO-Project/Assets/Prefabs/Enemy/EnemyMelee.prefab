@@ -115,13 +115,14 @@ GameObject:
   - component: {fileID: 7161704629696279359}
   - component: {fileID: 9013352081459955582}
   - component: {fileID: 4229560716695132670}
+  - component: {fileID: 2137701788016206544}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &279832066963227989
 Transform:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624304234995326959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ea585edd944ec489dd4d0e9c8bf36d, type: 3}
   m_Name: 
@@ -242,6 +243,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLunging: 0
+--- !u!114 &2137701788016206544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624304234995326959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7351e3a321171ce488da4326325001d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647745947077331853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060937643622027662, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
+        type: 3}
+      propertyPath: damage
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1907f44bb5b00d4f8a73f7c3309a4f2, type: 3}
