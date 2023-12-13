@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class SwitchWeapon : MonoBehaviour
 {
-    public Animator weapons;
+    public Animator anim;
     public GameObject halberd;
     public GameObject sword;
     public GameObject currentWeapon;
@@ -14,11 +14,7 @@ public class SwitchWeapon : MonoBehaviour
 
     private void Start()
     {
-        weapons = GetComponentInParent<Animator>();
-    }
-    private void Update()
-    {
-        
+        anim = GetComponentInParent<Animator>();
     }
 
     public void OnSwitch(InputAction.CallbackContext ctx)
@@ -41,18 +37,24 @@ public class SwitchWeapon : MonoBehaviour
         halberd.SetActive(true);
         sword.SetActive(false);
         currentWeapon = halberd;
-        weapons.SetLayerWeight(0, 0);
-        weapons.SetLayerWeight(1, 1);
+        anim.SetLayerWeight(0, 0);
+        anim.SetLayerWeight(1, 1);
+    }
 
+    public void SwitchLayers(int top, int bottom)
+    {
+        anim.SetLayerWeight(top, 1);
+        anim.SetLayerWeight(bottom, 0);
     }
     public void SwitchToSword()
     {
         halberd.SetActive(false);
         sword.SetActive(true);
         currentWeapon = sword;
-        weapons.SetLayerWeight(0, 1);
-        weapons.SetLayerWeight(1, 0);
+        anim.SetLayerWeight(0, 1);
+        anim.SetLayerWeight(1, 0);
     }
+
 
     public IEnumerator SwitchDelay()
     {

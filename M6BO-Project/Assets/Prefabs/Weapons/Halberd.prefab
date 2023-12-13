@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8519697382890545383}
   - component: {fileID: 8496799330490454138}
   - component: {fileID: 8496799330490454139}
-  - component: {fileID: 2049970902467276043}
+  - component: {fileID: 748931800}
   m_Layer: 0
   m_Name: Halberd
   m_TagString: Untagged
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   poiseDamage: 0
+  currentState: 0
 --- !u!114 &8496799330490454139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combo: {fileID: 0}
   hits: []
---- !u!64 &2049970902467276043
+--- !u!64 &748931800
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,9 +123,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7871438727160758578}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8678823145569952518, guid: f9d2a09b42ff24e4eb4d6ee5d3776f92, type: 3}
