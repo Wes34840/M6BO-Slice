@@ -18,8 +18,7 @@ public class HitDetection : MonoBehaviour
         if (combo.isAttacking && other.CompareTag("HitBox") && !hits.Contains(other))
         {
             hits.Add(other);
-            Debug.Log("burh");
-            other.GetComponentInParent<EntityStats>().health -= GetComponent<WeaponStats>().damage;
+            other.GetComponent<EntityHitbox>().TakeDamage(GetComponent<WeaponStats>());
         }
     }
 

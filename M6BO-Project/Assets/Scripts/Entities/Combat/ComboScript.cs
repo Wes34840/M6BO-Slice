@@ -1,5 +1,5 @@
-﻿using Unity.Burst.Intrinsics;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ComboScript : MonoBehaviour
 {
@@ -17,65 +17,45 @@ public class ComboScript : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+
+    public void LightAttack(InputAction.CallbackContext ctx)
+    {
+        animator.SetBool("ShouldGoNextCombo", true);
+    }
+
+    public void HeavyAttack(InputAction.CallbackContext ctx)
+    {
+        animator.SetBool("HeavyCombo", true);
+    }
+
+    public void SpecialAttack(in InputAction.CallbackContext ctx)
+    {
+        if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
+    }
     private void Update()
     {
-        switch (Input.inputString.ToLower())
-        {
-            case "e":
-                shouldGoNextCombo = true;
-                break;
-            case "q":
-                heavyCombo = true;
-                break;
-            case "u":
-                if (canSwap.currentWeapon == canSwap.halberd) specialAttacking = true; ;
-                break;
-
-        }
-        ShouldGoNextCombo(shouldGoNextCombo);
-        HeavyCombos(heavyCombo);
-        AshOfWar(specialAttacking);
-
-
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && shouldGoNextCombo == true || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && heavyCombo == true)
         {
-            shouldGoNextCombo = false;
-            heavyCombo = false;
+            ResetAttackStates();
         }
-    }
-
-    private void AshOfWar(bool value)
-    {
-        animator.SetBool("AshOfWar", value);
-    }
-    private void HeavyCombos(bool value)
-    {
-        animator.SetBool("HeavyCombo", value);
-    }
-
-    private void ShouldGoNextCombo(bool value)
-    {
-        animator.SetBool("ShouldGoNextCombo", value);
     }
 
     public void AnimationStarted()
     {
         if (heavyCombo) SetDamage(20);
-        if(specialAttacking) SetDamage(40);
+        if (specialAttacking) SetDamage(40);
         else SetDamage(10);
         isAttacking = true;
         shouldGoNextCombo = false;
         heavyCombo = false;
         specialAttacking = false;
         canSwap.canSwitch = false;
-
     }
     public void AttackingEnds()
     {
         isAttacking = false;
         hitD.hits.Clear();
         canSwap.canSwitch = true;
-
     }
 
     public void SetDamage(int damage)
@@ -84,6 +64,12 @@ public class ComboScript : MonoBehaviour
     }
 
 
+    public void ResetAttackStates()
+    {
+        animator.SetBool("ShouldGoNextCombo", false);
+        animator.SetBool("HeavyCombo", false);
+        animator.SetBool("AshOfWar", false);
+    }
 
 
 }
