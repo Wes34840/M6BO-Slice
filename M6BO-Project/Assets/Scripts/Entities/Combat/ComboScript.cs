@@ -28,7 +28,7 @@ public class ComboScript : MonoBehaviour
         animator.SetBool("HeavyCombo", true);
     }
 
-    public void SpecialAttack(in InputAction.CallbackContext ctx)
+    public void SpecialAttack(InputAction.CallbackContext ctx)
     {
         if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
     }
