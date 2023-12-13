@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class HitDetection : MonoBehaviour
@@ -18,6 +18,7 @@ public class HitDetection : MonoBehaviour
         if (combo.isAttacking && other.CompareTag("HitBox") && !hits.Contains(other))
         {
             hits.Add(other);
+            Debug.Log("burh");
             other.GetComponentInParent<EntityStats>().health -= GetComponent<WeaponStats>().damage;
         }
     }
