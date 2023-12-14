@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
-  maxPoise: 0
+  maxPoise: 10
   initialStun: 0
 --- !u!114 &5847339709885243208
 MonoBehaviour:
@@ -1935,6 +1935,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 25587f48-1722-4c5b-8cb0-537e905ff046
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1291735493}
+        m_TargetAssemblyTypeName: SwitchWeapon, Assembly-CSharp
+        m_MethodName: OnSwitch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e22d3090-a661-432f-9119-8f8e4287fca2
+    m_ActionName: Player/SwitchWeapons[/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3383,7 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df64e7f39df06af41991f3f0ae1da3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: {fileID: 1447678555878139671}
+  anim: {fileID: 0}
   halberd: {fileID: 1789695041667429228}
   sword: {fileID: 1789695040550065275}
   currentWeapon: {fileID: 0}
@@ -3403,7 +3419,12 @@ PrefabInstance:
     - target: {fileID: 7514700999851272261, guid: e22c255b225be9d4580a77ca2348de2e,
         type: 3}
       propertyPath: damage
-      value: 50
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514700999851272261, guid: e22c255b225be9d4580a77ca2348de2e,
+        type: 3}
+      propertyPath: poiseDamage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7514700999851272280, guid: e22c255b225be9d4580a77ca2348de2e,
         type: 3}
@@ -3577,6 +3598,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496799330490454138, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496799330490454138, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: poiseDamage
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87,
         type: 3}
