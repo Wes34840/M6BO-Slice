@@ -6,4 +6,5 @@ public class EntityStats : MonoBehaviour
     public float movementSpeed;
     public float rotSpeed;
     public float blockingPower;
+
 }
