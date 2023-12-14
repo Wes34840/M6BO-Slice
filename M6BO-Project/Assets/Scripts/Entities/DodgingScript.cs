@@ -22,7 +22,7 @@ public class DodgingScript : MonoBehaviour
     {
         if (ctx.ReadValue<float>() == 0) return;
         Debug.Log("called");
-        animator.SetBool("isDodging", true);
+        animator.SetBool("IsDodging", true);
         float animDuration = animator.runtimeAnimatorController.animationClips.First(i => i.name == "Dodge").length;
         StartCoroutine(WaitForAnimLength(animDuration));
         // Trigger I-Frames here
