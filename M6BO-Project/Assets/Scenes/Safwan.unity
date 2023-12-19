@@ -482,13 +482,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196834024}
   m_CullTransparentMesh: 1
+--- !u!1 &210520619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 624304234995326959, guid: 33f60edb44b5fd7488063093e4b19609,
+    type: 3}
+  m_PrefabInstance: {fileID: 317851022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &210520629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210520619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7351e3a321171ce488da4326325001d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &210520630 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3596279720548306552, guid: 33f60edb44b5fd7488063093e4b19609,
     type: 3}
   m_PrefabInstance: {fileID: 317851022}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 210520619}
+
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
@@ -500,7 +519,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 317851022}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 210520619}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8501601e81bce43822848a690375b7, type: 3}
@@ -1416,6 +1435,7 @@ PrefabInstance:
     - target: {fileID: 346658511, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
+
       objectReference: {fileID: 0}
     - target: {fileID: 483625473, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_HandleRect
@@ -1524,6 +1544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042525838026371975, guid: 27f7a8c931a35f446bac22d57b93fa7e,
+        type: 3}
+      propertyPath: maxPoise
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
