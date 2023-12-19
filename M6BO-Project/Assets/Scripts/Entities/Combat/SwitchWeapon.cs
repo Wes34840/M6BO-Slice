@@ -37,22 +37,21 @@ public class SwitchWeapon : MonoBehaviour
         halberd.SetActive(true);
         sword.SetActive(false);
         currentWeapon = halberd;
-        anim.SetLayerWeight(0, 0);
-        anim.SetLayerWeight(1, 1);
+        SwitchLayers(1, 0);
+    }
+
+    public void SwitchToSword()
+    {
+        halberd.SetActive(false);
+        sword.SetActive(true);
+        currentWeapon = sword;
+        SwitchLayers(0, 1);
     }
 
     public void SwitchLayers(int top, int bottom)
     {
         anim.SetLayerWeight(top, 1);
         anim.SetLayerWeight(bottom, 0);
-    }
-    public void SwitchToSword()
-    {
-        halberd.SetActive(false);
-        sword.SetActive(true);
-        currentWeapon = sword;
-        anim.SetLayerWeight(0, 1);
-        anim.SetLayerWeight(1, 0);
     }
 
 

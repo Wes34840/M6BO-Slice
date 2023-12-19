@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
     private EntityStats playerStats;
     private Rigidbody rb;
     private Vector3 dir;
+    private Animator anim;
     void Start()
     {
         playerStats = GetComponent<EntityStats>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -17,7 +19,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 horizontalInput = ctx.ReadValue<Vector3>();
         dir = new Vector3(horizontalInput.x, 0, horizontalInput.z);
+        SetAnimInput(horizontalInput);
     }
+
+    public void SetAnimInput(Vector3 input)
+    {
+        anim.SetInteger("HorizontalInput", (int)input.x);
+        anim.SetInteger("VerticalInput", (int)input.z);
+        anim.SetFloat("HorizontalMod", input.x);
+        anim.SetFloat("VerticalMod", input.z);
+    }
+
     private void Update()
     {
         float currGrav = GetGravity();
