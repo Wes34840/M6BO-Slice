@@ -66,6 +66,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

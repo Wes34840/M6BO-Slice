@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8418980809923175619}
   - component: {fileID: 9190963085265564485}
   m_Layer: 0
-  m_Name: Child
+  m_Name: NewEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,7 +1046,7 @@ PrefabInstance:
     - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: 0.443
       objectReference: {fileID: 0}
     - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
         type: 3}
