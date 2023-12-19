@@ -241,6 +241,75 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &340142192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6580315
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.039024767
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7686862
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6fc55954789d8846a20b4be9072071e,
+        type: 3}
+      propertyPath: m_Name
+      value: eldenring_enemy_weapons_temporary
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6fc55954789d8846a20b4be9072071e, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +403,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
@@ -403,7 +472,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &837432812
 GameObject:
@@ -503,7 +572,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &837432817
 MonoBehaviour:
@@ -601,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  movementSpeed: 0
 --- !u!1 &908294091
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +767,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &308707847739655927
 PrefabInstance:
@@ -714,7 +784,7 @@ PrefabInstance:
     - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
         type: 3}
