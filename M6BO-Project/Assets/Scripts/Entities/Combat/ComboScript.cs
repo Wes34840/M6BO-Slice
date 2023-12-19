@@ -4,51 +4,48 @@ using UnityEngine.InputSystem;
 public class ComboScript : MonoBehaviour
 {
     internal Animator animator;
-    private bool shouldGoNextCombo;
     internal bool isAttacking;
-    private bool heavyCombo;
     public HitDetection hitD;
     public SwitchWeapon canSwap;
-    private bool specialAttacking;
-
 
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-
     public void LightAttack(InputAction.CallbackContext ctx)
     {
+        if (isAttacking) return;
+        isAttacking = true;
         animator.SetBool("ShouldGoNextCombo", true);
     }
 
     public void HeavyAttack(InputAction.CallbackContext ctx)
     {
+        if (isAttacking) return;
+        isAttacking = true;
         animator.SetBool("HeavyCombo", true);
     }
 
     public void SpecialAttack(InputAction.CallbackContext ctx)
     {
+        if (isAttacking) return;
         if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
     }
+    /*
     private void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && shouldGoNextCombo == true || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && heavyCombo == true)
-        {
-            ResetAttackStates();
-        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && animator.GetBool("ShouldGoNextCombo") || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && animator.GetBool("HeavyCombo")) ResetAttackStates();
     }
+    */
 
     public void AnimationStarted()
     {
-        if (heavyCombo) SetDamage(20);
-        if (specialAttacking) SetDamage(40);
-        else SetDamage(10);
+        if (animator.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
+        else if (animator.GetBool("AshOfWar")) SetAttackState(WeaponStats.AttackState.Special);
+        else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
-        shouldGoNextCombo = false;
-        heavyCombo = false;
-        specialAttacking = false;
+        ResetAttackStates();
         canSwap.canSwitch = false;
     }
     public void AttackingEnds()
@@ -58,11 +55,10 @@ public class ComboScript : MonoBehaviour
         canSwap.canSwitch = true;
     }
 
-    public void SetDamage(int damage)
+    public void SetAttackState(WeaponStats.AttackState state)
     {
-        hitD.gameObject.GetComponent<WeaponStats>().damage = damage;
+        hitD.gameObject.GetComponent<WeaponStats>().currentState = state;
     }
-
 
     public void ResetAttackStates()
     {
@@ -70,7 +66,6 @@ public class ComboScript : MonoBehaviour
         animator.SetBool("HeavyCombo", false);
         animator.SetBool("AshOfWar", false);
     }
-
 
 }
 

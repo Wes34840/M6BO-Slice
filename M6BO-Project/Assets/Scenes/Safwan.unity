@@ -507,6 +507,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 317851022}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210520619}
+
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
@@ -614,7 +615,7 @@ PrefabInstance:
     - target: {fileID: 9013352081459955582, guid: 33f60edb44b5fd7488063093e4b19609,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 9081328513607745069, guid: 33f60edb44b5fd7488063093e4b19609,
         type: 3}
@@ -1434,6 +1435,7 @@ PrefabInstance:
     - target: {fileID: 346658511, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
+
       objectReference: {fileID: 0}
     - target: {fileID: 483625473, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_HandleRect
@@ -1442,6 +1444,30 @@ PrefabInstance:
     - target: {fileID: 483625473, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: e22d3090-a661-432f-9119-8f8e4287fca2
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/SwitchWeapons[/Keyboard/leftArrow,/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 660716328, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 669726079, guid: 27f7a8c931a35f446bac22d57b93fa7e, type: 3}
       propertyPath: m_AnchorMax.x
