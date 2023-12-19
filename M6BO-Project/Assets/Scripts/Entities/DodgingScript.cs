@@ -10,11 +10,14 @@ public class DodgingScript : MonoBehaviour
 
     public Animator animator;
     EntityHitbox HitBox;
+    private bool isRolling;
+    private Rigidbody rb;
 
     public void Start()
     {
         HitBox = transform.GetChild(2).GetComponent<EntityHitbox>();
         animator = GetComponent<Animator>();
+        rb= GetComponent<Rigidbody>();
     }
 
 
@@ -27,6 +30,7 @@ public class DodgingScript : MonoBehaviour
         StartCoroutine(WaitForAnimLength(animDuration));
         // Trigger I-Frames here
         HitBox.isDodging = true;
+        isRolling = true;
 
     }
     public IEnumerator WaitForAnimLength(float delay)
@@ -34,6 +38,12 @@ public class DodgingScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         animator.SetBool("IsDodging", false);
         HitBox.isDodging = false;
+        isRolling= false;
+    }
+    private void Update()
+    {
+        if (!isRolling) return;
+        rb.velocity = transform.forward * 1.5f;
     }
 
 
