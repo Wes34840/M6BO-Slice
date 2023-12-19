@@ -26,6 +26,7 @@ public class DodgingScript : MonoBehaviour
         float animDuration = animator.runtimeAnimatorController.animationClips.First(i => i.name == "Dodge").length;
         StartCoroutine(WaitForAnimLength(animDuration));
         // Trigger I-Frames here
+        HitBox.enabled = false;
 
     }
     public IEnumerator WaitForAnimLength(float delay)
