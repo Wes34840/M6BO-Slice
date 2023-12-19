@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Safwan.unity
     guid: cfb0e6251f86baf438b7c3cf24f8b188
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/Archive/GameOver.unity
     guid: 74534ba825ff2db408dec6d5c2a83efd
   m_configObjects: {}

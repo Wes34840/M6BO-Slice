@@ -58,6 +58,14 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                 },
+                 {
+                    "name": "SwitchWeapons",
+                    "type": "Button",
+                    "id": "e22d3090-a661-432f-9119-8f8e4287fca2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                 }
             ],
             "bindings": [
@@ -203,6 +211,39 @@
                     "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "c23e4576-d120-443d-9507-8207b0fe5023",
+                    "path": "1DAxis",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchWeapons",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e0c50614-5815-4e92-a0be-811fe596fe7c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SwitchWeapons",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "6aeadee4-ee0d-46ae-b8d4-95f6fa07a4ac",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SwitchWeapons",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

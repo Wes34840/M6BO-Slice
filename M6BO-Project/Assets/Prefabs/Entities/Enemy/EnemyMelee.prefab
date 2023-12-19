@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 9013352081459955582}
   - component: {fileID: 4229560716695132670}
   - component: {fileID: 3596279720548306552}
+  - component: {fileID: 1153819917176319882}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   health: 0
   movementSpeed: 3
   rotSpeed: 3
+  blockingPower: 0
 --- !u!114 &4229560716695132670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +259,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   maxPoise: 10
+  initialStun: 0
+--- !u!114 &1153819917176319882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624304234995326959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7351e3a321171ce488da4326325001d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647745947077331853
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +891,7 @@ GameObject:
   - component: {fileID: 9036229475907303235}
   - component: {fileID: 3523121060408667991}
   - component: {fileID: 1312504052438813732}
+  - component: {fileID: 1406496813}
   m_Layer: 0
   m_Name: hitbox
   m_TagString: HitBox
@@ -961,6 +977,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fb5ee2338833841ba2e74983647b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1406496813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875008279480840046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 9013352081459955582}
+  poise: {fileID: 3596279720548306552}
+  isBlocking: 0
 --- !u!1 &3969508446318380391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,21 +1787,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 18.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 18.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 18.75
       objectReference: {fileID: 0}
     - target: {fileID: 6645395122173286623, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
         type: 3}

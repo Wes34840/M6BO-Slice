@@ -107252,11 +107252,18 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.2
+  - time: 2.4166667
     functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394,
       type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.4833333
+    functionName: ResetAttackStates
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
