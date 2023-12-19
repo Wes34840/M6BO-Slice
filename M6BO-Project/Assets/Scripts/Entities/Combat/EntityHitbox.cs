@@ -5,8 +5,11 @@ public class EntityHitbox : MonoBehaviour
     public EntityStats stats;
     public EntityPoise poise;
     public bool isBlocking;
+    public bool isDodging;
+
     public void TakeDamage(WeaponStats weapon)
     {
+        if (isDodging) return;
         float damage = CalculateDamage(weapon);
         float poiseDamage = CalculatePoise(weapon);
         if (isBlocking)

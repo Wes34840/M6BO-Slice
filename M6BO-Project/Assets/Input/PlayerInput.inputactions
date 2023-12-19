@@ -51,13 +51,21 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dodge",
+                    "type": "Value",
+                    "id": "9784f885-9f4c-4f22-a053-255a42cc2894",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                 },
+                 {
                     "name": "SwitchWeapons",
                     "type": "Button",
                     "id": "e22d3090-a661-432f-9119-8f8e4287fca2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -190,6 +198,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "AshOfWar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3692c258-eaf4-45aa-bc38-a28b9b3e9786",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
