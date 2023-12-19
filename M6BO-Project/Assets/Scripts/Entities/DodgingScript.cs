@@ -9,11 +9,11 @@ public class DodgingScript : MonoBehaviour
 
 
     public Animator animator;
-    BoxCollider HitBox;
+    EntityHitbox HitBox;
 
     public void Start()
     {
-        HitBox = transform.GetChild(2).GetComponent<BoxCollider>();
+        HitBox = transform.GetChild(2).GetComponent<EntityHitbox>();
         animator = GetComponent<Animator>();
     }
 
@@ -26,13 +26,14 @@ public class DodgingScript : MonoBehaviour
         float animDuration = animator.runtimeAnimatorController.animationClips.First(i => i.name == "Dodge").length;
         StartCoroutine(WaitForAnimLength(animDuration));
         // Trigger I-Frames here
-        HitBox.enabled = false;
+        HitBox.isDodging = true;
 
     }
     public IEnumerator WaitForAnimLength(float delay)
     {
         yield return new WaitForSeconds(delay);
         animator.SetBool("IsDodging", false);
+        HitBox.isDodging = false;
     }
 
 
