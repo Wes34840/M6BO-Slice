@@ -5,19 +5,30 @@ public class TriggerDamage : MonoBehaviour
 {
     public List<Collider> hits = new List<Collider>();
     private WeaponStats weaponStats;
+    private AudioSource source; 
+    public AudioClip[] hitSounds;
+    private AudioClip shootClip;
     void Start()
     {
         weaponStats = GetComponent<WeaponStats>();
+        source= GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
+       
         if (hits.Contains(other) || other.CompareTag("TriggerBox") || other.CompareTag("Weapon")) return;
-        Debug.Log("Called");
+      
         other.GetComponent<EntityHitbox>().TakeDamage(weaponStats);
         hits.Add(other);
         StartCoroutine(ClearList());
+        int index = Random.Range(0, hitSounds.Length);
+        shootClip = hitSounds[index];
+        source.clip= shootClip; 
+        source.Play(); 
+
+
+
     }
 
     private IEnumerator ClearList()

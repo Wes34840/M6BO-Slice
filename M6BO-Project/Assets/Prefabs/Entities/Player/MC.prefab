@@ -782,6 +782,7 @@ MonoBehaviour:
   stats: {fileID: 1447678554503382751}
   poise: {fileID: 6042525838026371975}
   isBlocking: 0
+  isDodging: 0
 --- !u!1 &103719747468490717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,7 +1696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitD: {fileID: 469150158}
+  isAttacking: 0
+  hitD: {fileID: 0}
   canSwap: {fileID: 1291735493}
 --- !u!95 &1447678555878139671
 Animator:
@@ -1789,6 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e30909e40f0bf488c3dc226f66d1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkingClip: {fileID: 0}
 --- !u!114 &660716328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,18 +3506,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22c255b225be9d4580a77ca2348de2e, type: 3}
---- !u!114 &469150158 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7514700999851272260, guid: e22c255b225be9d4580a77ca2348de2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7514701000005829002}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789695040550065275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07259d78140888a45a95fd0ed0157506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1413451354545032897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8922759210201861963, guid: e22c255b225be9d4580a77ca2348de2e,

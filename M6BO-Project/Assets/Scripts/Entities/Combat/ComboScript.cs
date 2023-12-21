@@ -11,6 +11,7 @@ public class ComboScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        hitD= GetComponentInChildren<HitDetection>();
     }
 
     public void LightAttack(InputAction.CallbackContext ctx)
