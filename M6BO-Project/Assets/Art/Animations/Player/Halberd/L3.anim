@@ -51527,15 +51527,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1833333
-    functionName: AttackingEnds
+  - time: 1.3333334
+    functionName: ResetAttackStates
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.3333334
-    functionName: ResetAttackStates
+    functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

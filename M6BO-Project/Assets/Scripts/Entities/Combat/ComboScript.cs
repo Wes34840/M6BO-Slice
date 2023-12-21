@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class ComboScript : MonoBehaviour
 {
     internal Animator animator;
-    internal bool isAttacking;
+    public bool isAttacking;
     public HitDetection hitD;
     public SwitchWeapon canSwap;
 
@@ -32,12 +32,7 @@ public class ComboScript : MonoBehaviour
         if (isAttacking) return;
         if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
     }
-    /*
-    private void Update()
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && animator.GetBool("ShouldGoNextCombo") || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && animator.GetBool("HeavyCombo")) ResetAttackStates();
-    }
-    */
+   
 
     public void AnimationStarted()
     {
@@ -62,9 +57,11 @@ public class ComboScript : MonoBehaviour
 
     public void ResetAttackStates()
     {
+
         animator.SetBool("ShouldGoNextCombo", false);
         animator.SetBool("HeavyCombo", false);
         animator.SetBool("AshOfWar", false);
+
     }
 
 }
