@@ -7,19 +7,24 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 dir;
     private Animator anim;
+    public AudioClip walkingClip;
+    private AudioSource Audio;
     void Start()
     {
         playerStats = GetComponent<EntityStats>();
         rb = GetComponent<Rigidbody>();
+        Audio= GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
     // ctx = the value that is given when the action is called, you can see the type of the variable in the Player Input Actions, the Action you are calling and looking at the "Control Type"
     {
-        Vector3 horizontalInput = ctx.ReadValue<Vector3>();
-        dir = new Vector3(horizontalInput.x, 0, horizontalInput.z);
-        SetAnimInput(horizontalInput);
+        Vector3 movementInput = ctx.ReadValue<Vector3>();
+        dir = new Vector3(movementInput.x, 0, movementInput.z);
+        SetAnimInput(movementInput);
+        WalkingNoise(movementInput);
     }
 
     public void SetAnimInput(Vector3 input)
@@ -28,6 +33,17 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("VerticalInput", (int)input.z);
         anim.SetFloat("HorizontalMod", input.x);
         anim.SetFloat("VerticalMod", input.z);
+        
+        
+    }
+
+    public void WalkingNoise(Vector3 input )
+    {
+        Audio.PlayOneShot(walkingClip);
+        if(input == Vector3.zero)
+        {
+            Audio.Stop();
+        }
     }
 
     private void Update()
@@ -39,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyControlMotion()
     {
         rb.velocity = ((transform.forward * dir.z) + (transform.right * dir.x)) * playerStats.movementSpeed;
+       
+        
+
     }
     private float GetGravity()
     {
