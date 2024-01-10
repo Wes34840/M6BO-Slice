@@ -9,6 +9,8 @@ public class EntityHitbox : MonoBehaviour
 
     public void TakeDamage(WeaponStats weapon)
     {
+        transform.parent.TryGetComponent(out PathingAI path);
+        if (path != null) path.TryWakeUp();
         if (isDodging) return;
         float damage = CalculateDamage(weapon);
         float poiseDamage = CalculatePoise(weapon);

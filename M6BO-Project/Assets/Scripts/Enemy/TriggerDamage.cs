@@ -12,9 +12,7 @@ public class TriggerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
         if (hits.Contains(other) || other.CompareTag("TriggerBox") || other.CompareTag("Weapon")) return;
-        Debug.Log("Called");
         other.GetComponent<EntityHitbox>().TakeDamage(weaponStats);
         hits.Add(other);
         StartCoroutine(ClearList());
