@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyParentAnimScript : MonoBehaviour
@@ -14,12 +14,12 @@ public class EnemyParentAnimScript : MonoBehaviour
 
     public void StopAgent()
     {
-        agent.isStopped = true;
+        agent.enabled = false;
     }
 
     public void StartAgent()
     {
-        agent.isStopped = false;
+        agent.enabled = true;
     }
 
     public void StartLunge()

@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 public class ComboScript : MonoBehaviour
 {
     internal Animator animator;
-    internal bool isAttacking;
+    public bool isAttacking;
     public HitDetection hitD;
     public SwitchWeapon canSwap;
-    public PlayerMovement playerMovement;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,10 +32,8 @@ public class ComboScript : MonoBehaviour
         if (isAttacking) return;
         if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
     }
-    public void InitLock()
-    {
-        StartCoroutine(playerMovement.LockMovement(animator.GetCurrentAnimatorClipInfo(1).Length));
-    }
+   
+
     public void AnimationStarted()
     {
         if (animator.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
@@ -59,9 +57,11 @@ public class ComboScript : MonoBehaviour
 
     public void ResetAttackStates()
     {
+
         animator.SetBool("ShouldGoNextCombo", false);
         animator.SetBool("HeavyCombo", false);
         animator.SetBool("AshOfWar", false);
+
     }
 
 }

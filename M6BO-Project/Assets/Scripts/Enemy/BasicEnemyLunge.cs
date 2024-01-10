@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class BasicEnemyLunge : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class BasicEnemyLunge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.drag = 40;
+        rb.drag = 40;
         if (isLunging)
         {
             rb.drag = 0;
