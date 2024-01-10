@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6522071828191852741}
   - component: {fileID: 3244611579657014786}
   - component: {fileID: 3706896347068152387}
-  - component: {fileID: 8418980809923175619}
   - component: {fileID: 9190963085265564485}
   m_Layer: 0
   m_Name: NewEnemy
@@ -131,19 +130,6 @@ MonoBehaviour:
   movementSpeed: 3
   rotSpeed: 3
   blockingPower: 0
---- !u!114 &8418980809923175619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5101918688926851794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf901d1b090c44945b626fbccd56184d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLunging: 0
 --- !u!114 &9190963085265564485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   anim: {fileID: 3675908946328816254}
+  rb: {fileID: 0}
 --- !u!135 &2327568277215906314
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -54,7 +54,6 @@ public class SwitchWeapon : MonoBehaviour
         anim.SetLayerWeight(bottom, 0);
     }
 
-
     public IEnumerator SwitchDelay()
     {
         yield return new WaitForSeconds(0.5f);
