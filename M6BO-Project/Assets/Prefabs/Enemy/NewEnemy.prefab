@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3244611579657014786}
   - component: {fileID: 3706896347068152387}
   - component: {fileID: 9190963085265564485}
+  - component: {fileID: 1559841181}
   m_Layer: 0
   m_Name: NewEnemy
   m_TagString: Untagged
@@ -74,7 +75,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6522071828191852741
 MonoBehaviour:
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8501601e81bce43822848a690375b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   movementSpeed: 3
   rotSpeed: 3
   blockingPower: 0
@@ -145,6 +146,18 @@ MonoBehaviour:
   anim: {fileID: 0}
   maxPoise: 10
   initialStun: 0
+--- !u!114 &1559841181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5101918688926851794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7351e3a321171ce488da4326325001d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5648729307977214755
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +894,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   anim: {fileID: 3675908946328816254}
-  rb: {fileID: 0}
+  rb: {fileID: 2732290542776004526}
+  enemyFOV: {fileID: 3244611579657014786}
 --- !u!135 &2327568277215906314
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -908,6 +922,7 @@ GameObject:
   - component: {fileID: 3675908946328816254}
   - component: {fileID: 9115552349351924330}
   - component: {fileID: 6652557839567040793}
+  - component: {fileID: 66346738}
   m_Layer: 0
   m_Name: hitbox
   m_TagString: HitBox
@@ -946,7 +961,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: -3426373211179655333, guid: a7f5ba91b5de4d7449b9f7eb003365d0, type: 3}
 --- !u!95 &3675908946328816254
 Animator:
@@ -993,6 +1008,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fb5ee2338833841ba2e74983647b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &66346738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908852470976172627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 3706896347068152387}
+  poise: {fileID: 9190963085265564485}
+  isBlocking: 0
+  isDodging: 0
 --- !u!1001 &3334657685881744273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1075,6 +1106,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8060937643622027662, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
+        type: 3}
+      propertyPath: currentState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1907f44bb5b00d4f8a73f7c3309a4f2, type: 3}
 --- !u!114 &1540242709888466340 stripped
@@ -1102,6 +1138,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2847803231029029266}
     m_Modifications:
+    - target: {fileID: 4400481397787699126, guid: ccaea34c134140644bdc6084bc6b9e50,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01810516
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400481397787699126, guid: ccaea34c134140644bdc6084bc6b9e50,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.009804
+      objectReference: {fileID: 0}
     - target: {fileID: 6147114140982298060, guid: ccaea34c134140644bdc6084bc6b9e50,
         type: 3}
       propertyPath: m_Name

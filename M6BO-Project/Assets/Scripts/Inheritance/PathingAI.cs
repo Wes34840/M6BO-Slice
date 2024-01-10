@@ -35,6 +35,7 @@ public class PathingAI : MonoBehaviour
     public virtual void CheckForPlayer()
     {
         Transform target = fov.FindVisibleTargets();
+        if (target != null) TryWakeUp();
         if (target != null && !agent.isStopped)
         {
             Vector3 targetPos = target.position;
