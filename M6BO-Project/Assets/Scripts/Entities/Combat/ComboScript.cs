@@ -7,7 +7,7 @@ public class ComboScript : MonoBehaviour
     internal bool isAttacking;
     public HitDetection hitD;
     public SwitchWeapon canSwap;
-
+    public PlayerMovement playerMovement;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,13 +32,10 @@ public class ComboScript : MonoBehaviour
         if (isAttacking) return;
         if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
     }
-    /*
-    private void Update()
+    public void InitLock()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("LightAttack3") && animator.GetBool("ShouldGoNextCombo") || animator.GetCurrentAnimatorStateInfo(0).IsName("HeavyAttack3") && animator.GetBool("HeavyCombo")) ResetAttackStates();
+        StartCoroutine(playerMovement.LockMovement(animator.GetCurrentAnimatorClipInfo(1).Length));
     }
-    */
-
     public void AnimationStarted()
     {
         if (animator.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);

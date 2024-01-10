@@ -51520,6 +51520,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: InitLock
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.2
     functionName: AnimationStarted
     data: 
@@ -51527,15 +51534,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1833333
-    functionName: AttackingEnds
+  - time: 1.3333334
+    functionName: ResetAttackStates
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.3333334
-    functionName: ResetAttackStates
+    functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 dir;
     private Animator anim;
+    public bool canMove = true;
     void Start()
     {
         playerStats = GetComponent<EntityStats>();
@@ -29,11 +31,17 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("HorizontalMod", input.x);
         anim.SetFloat("VerticalMod", input.z);
     }
+    public IEnumerator LockMovement(float duration)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(duration);
+        canMove = true;
+    }
 
     private void Update()
     {
         float currGrav = GetGravity();
-        ApplyControlMotion();
+        if (canMove) ApplyControlMotion();
         ApplyGravity(currGrav);
     }
     private void ApplyControlMotion()

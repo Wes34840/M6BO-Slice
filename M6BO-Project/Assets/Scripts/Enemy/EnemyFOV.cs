@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class EnemyFOV : MonoBehaviour
@@ -16,9 +16,11 @@ public class EnemyFOV : MonoBehaviour
         Vector3 dirToTarget = (target.position - transform.position).normalized;
         if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2) // checks if player is in view angle
         {
+            Debug.Log("player in angle");
             float distToTarget = Vector3.Distance(transform.position, target.position); // finds distance of player
             if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, ObstacleMask)) // checks if there is an obstacle between the player and enemy
             {
+                Debug.Log("player in distance");
                 return targets[0].transform;
             }
         }

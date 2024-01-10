@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class PathingAI : MonoBehaviour
@@ -35,14 +35,11 @@ public class PathingAI : MonoBehaviour
     public virtual void CheckForPlayer()
     {
         Transform target = fov.FindVisibleTargets();
-        if (target != null && agent.enabled)
+        if (target != null) TryWakeUp();
+        if (target != null && !agent.isStopped)
         {
             Vector3 targetPos = target.position;
-            if (!awoken)
-            {
-                agent.isStopped = false;
-                awoken = true;
-            }
+            TryWakeUp();
             agent.SetDestination(targetPos);
             fov.viewAngle = 360;
             aggroTimer = 20;
@@ -51,7 +48,7 @@ public class PathingAI : MonoBehaviour
 
     public virtual void HandleRotation()
     {
-        if (agent.enabled)
+        if (!agent.isStopped)
         {
             GetComponent<Rigidbody>().freezeRotation = false;
             model.rotation = UpdateDirection(agent.steeringTarget);
@@ -67,6 +64,7 @@ public class PathingAI : MonoBehaviour
             fov.viewAngle = 190;
         }
     }
+
     public Quaternion UpdateDirection(Vector3 target)
     {
         Vector3 lookDir = target - transform.position;
@@ -74,5 +72,16 @@ public class PathingAI : MonoBehaviour
         if (lookDir.magnitude <= 0.1f && lookDir.magnitude >= -0.1f) return Quaternion.identity;
         Quaternion lookRot = Quaternion.LookRotation(lookDir);
         return Quaternion.Lerp(model.rotation, lookRot, Time.deltaTime * stats.rotSpeed);
+    }
+
+    public void TryWakeUp()
+    {
+        if (!awoken)
+        {
+            agent.isStopped = false;
+            awoken = true;
+            fov.viewAngle = 360;
+            aggroTimer = 20;
+        }
     }
 }

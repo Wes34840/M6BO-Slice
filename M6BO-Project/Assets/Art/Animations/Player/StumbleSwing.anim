@@ -13986,7 +13986,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.4833333
+    m_StopTime: 2.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -107244,6 +107244,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: InitLock
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.26666668
     functionName: AnimationStarted
     data: 
@@ -107252,7 +107259,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.4166667
+  - time: 2.4833333
     functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394,
@@ -107260,7 +107267,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.4833333
+  - time: 2.5
     functionName: ResetAttackStates
     data: 
     objectReferenceParameter: {fileID: 0}
