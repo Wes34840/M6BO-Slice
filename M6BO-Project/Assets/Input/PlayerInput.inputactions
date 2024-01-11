@@ -58,14 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                 },
-                 {
+                },
+                {
                     "name": "SwitchWeapons",
                     "type": "Button",
                     "id": "e22d3090-a661-432f-9119-8f8e4287fca2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
