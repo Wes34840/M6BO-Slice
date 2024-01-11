@@ -5,45 +5,61 @@ using UnityEngine.InputSystem;
 
 public class DodgingScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
-    public Animator animator;
-    EntityHitbox HitBox;
-    private bool isRolling;
+    private Animator animator;
+    private EntityHitbox HitBox;
+    private PlayerMovement movementScript;
     private Rigidbody rb;
-
+    private bool isRolling;
+    [SerializeField] private float rollForce;
+    private Vector3 rollDirection;
     public void Start()
     {
         HitBox = transform.GetChild(2).GetComponent<EntityHitbox>();
         animator = GetComponent<Animator>();
-        rb= GetComponent<Rigidbody>();
+        movementScript = GetComponent<PlayerMovement>();
+        rb = GetComponent<Rigidbody>();
     }
 
-
-    public void DodgeChildSupport(InputAction.CallbackContext ctx)
+    public void InitDodge(InputAction.CallbackContext ctx)
     {
-        if (ctx.ReadValue<float>() == 0) return;
-        Debug.Log("called");
+        if (!ctx.performed || isRolling) return;
         animator.SetBool("IsDodging", true);
-        float animDuration = animator.runtimeAnimatorController.animationClips.First(i => i.name == "Dodge").length;
+        float animDuration = animator.runtimeAnimatorController.animationClips.First(i => i.name == "Dodge").length - 0.1f;
         StartCoroutine(WaitForAnimLength(animDuration));
-        // Trigger I-Frames here
-        HitBox.isDodging = true;
         isRolling = true;
+        movementScript.canMove = false;
+        HitBox.isDodging = true;
+        rb.velocity = Vector3.zero;
 
+        rollDirection = GetRollDirection();
+        if (rollDirection != transform.forward) RotatePlayer(movementScript.inputDir);
     }
     public IEnumerator WaitForAnimLength(float delay)
     {
         yield return new WaitForSeconds(delay);
         animator.SetBool("IsDodging", false);
+        isRolling = false;
+        movementScript.canMove = true;
         HitBox.isDodging = false;
-        isRolling= false;
     }
+
+    private Vector3 GetRollDirection()
+    {
+        Vector3 input = movementScript.inputDir;
+        if (input == Vector3.zero) return transform.forward;
+        return (transform.forward * input.z) + (transform.right * input.x).normalized;
+    }
+
+    private void RotatePlayer(Vector3 inputDir)
+    {
+        float lookDir = Mathf.Atan2(inputDir.x, inputDir.z);
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + (Mathf.Rad2Deg * lookDir), 0);
+    }
+
     private void Update()
     {
         if (!isRolling) return;
-        rb.velocity = transform.forward * 1.5f;
+        transform.position += rollDirection * rollForce * Time.deltaTime;
     }
 
 

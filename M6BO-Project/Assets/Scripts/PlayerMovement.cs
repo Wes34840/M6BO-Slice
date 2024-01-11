@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private EntityStats playerStats;
     private Rigidbody rb;
-    private Vector3 dir;
     private Animator anim;
+    public Vector3 inputDir;
     public bool canMove = true;
     void Start()
     {
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // ctx = the value that is given when the action is called, you can see the type of the variable in the Player Input Actions, the Action you are calling and looking at the "Control Type"
     {
         Vector3 horizontalInput = ctx.ReadValue<Vector3>();
-        dir = new Vector3(horizontalInput.x, 0, horizontalInput.z);
+        inputDir = new Vector3(horizontalInput.x, 0, horizontalInput.z);
         SetAnimInput(horizontalInput);
     }
 
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ApplyControlMotion()
     {
-        rb.velocity = ((transform.forward * dir.z) + (transform.right * dir.x)) * playerStats.movementSpeed;
+        rb.velocity = ((transform.forward * inputDir.z) + (transform.right * inputDir.x)) * playerStats.movementSpeed;
     }
     private float GetGravity()
     {
