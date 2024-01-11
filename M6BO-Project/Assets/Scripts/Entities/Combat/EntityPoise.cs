@@ -48,6 +48,8 @@ public class EntityPoise : MonoBehaviour
         anim.SetTrigger("Stun");
         AnimationClip stunClip = anim.runtimeAnimatorController.animationClips.First(i => i.name == "Stun");
         StartCoroutine(WaitForDuration(stunClip.length));
+        TryGetComponent(out PlayerMovement movement);
+        if (movement != null) StartCoroutine(movement.LockMovement(stunClip.length));
     }
 
     public void ResetPoise()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     public AudioClip walkingClip;
     private AudioSource Audio;
+    public bool canMove = true;
+
     void Start()
     {
         playerStats = GetComponent<EntityStats>();
@@ -45,11 +48,17 @@ public class PlayerMovement : MonoBehaviour
             Audio.Stop();
         }
     }
+    public IEnumerator LockMovement(float duration)
+    {
+        canMove = false;
+        yield return new WaitForSeconds(duration);
+        canMove = true;
+    }
 
     private void Update()
     {
         float currGrav = GetGravity();
-        ApplyControlMotion();
+        if (canMove) ApplyControlMotion();
         ApplyGravity(currGrav);
     }
     private void ApplyControlMotion()

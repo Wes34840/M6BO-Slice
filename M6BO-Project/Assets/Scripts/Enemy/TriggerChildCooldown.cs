@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TriggerChildCooldown : MonoBehaviour
 {
     public TriggerDamage dam;
     public void startCooldown()
     {
-        StartCoroutine(GetComponentInChildren<EnemyMeleeAttack>().waitForCooldown());
+        StartCoroutine(GetComponentInChildren<EnemyMeleeAttack>().WaitForCooldown());
         dam.hits.Clear();
     }
 
