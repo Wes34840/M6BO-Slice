@@ -7,9 +7,13 @@ public class EntityHitbox : MonoBehaviour
     public bool isBlocking;
     public bool isDodging;
 
+
     public void TakeDamage(WeaponStats weapon)
     {
         if (isDodging) return;
+
+        PlayParticle();
+
         float damage = CalculateDamage(weapon);
         float poiseDamage = CalculatePoise(weapon);
         if (isBlocking)
@@ -21,7 +25,15 @@ public class EntityHitbox : MonoBehaviour
         {
             stats.health -= damage;
             poise.CurrentPoise -= poiseDamage;
+
         }
+
+
+    }
+
+    public void PlayParticle()
+    {
+        GetComponent<BloodParticles>().PlayBloodSpatter();
     }
 
     public float CalculateDamage(WeaponStats weapon)

@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 public class CollisionDamage : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class CollisionDamage : MonoBehaviour
     {
         stats = GetComponent<WeaponStats>();
         Physics.IgnoreCollision(parentColl, GetComponent<BoxCollider>());
+
     }
     private void OnCollisionEnter(Collision collision)
     {
