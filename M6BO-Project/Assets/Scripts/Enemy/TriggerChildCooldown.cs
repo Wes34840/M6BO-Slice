@@ -2,11 +2,12 @@
 
 public class TriggerChildCooldown : MonoBehaviour
 {
-    public TriggerDamage dam;
+    [SerializeField] private TriggerDamage _damageTrigger;
+
     public void startCooldown()
     {
         StartCoroutine(GetComponentInChildren<EnemyMeleeAttack>().WaitForCooldown());
-        dam.hits.Clear();
+        _damageTrigger.hits.Clear();
     }
 
 }

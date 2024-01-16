@@ -1,89 +1,74 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ComboScript : MonoBehaviour
 {
-    internal Animator animator;
-    internal bool isAttacking;
-    public HitDetection hitD;
-    public SwitchWeapon canSwap;
-    public PlayerMovement playerMovement;
-    public AudioClip[] lightSwings;
-    public AudioClip[] heavySwings;
-    private AudioSource source;
+    public Animator anim;
+    public bool isAttacking;
+    private HitDetection _hitDetection;
+    [SerializeField] private SwitchWeapon _switchWeapon;
+    private PlayerMovement _playerMovement;
+    [SerializeField] private AudioClip[] _lightSwings;
+    [SerializeField] private AudioClip[] _heavySwings;
+    private AudioSource _audioSource;
     void Start()
     {
-        animator = GetComponent<Animator>();
-        hitD = GetComponentInChildren<HitDetection>();
-        source = GetComponent<AudioSource>();
-
+        anim = GetComponent<Animator>();
+        _hitDetection = GetComponentInChildren<HitDetection>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    public void LightAttack(InputAction.CallbackContext ctx)
+    public void Attack(string animatorParameter)
     {
         if (isAttacking) return;
         isAttacking = true;
-        animator.SetBool("ShouldGoNextCombo", true);
+        if (_switchWeapon.currentWeapon == _switchWeapon.halberd)
+        {
+            anim.SetBool(animatorParameter, true);
+            return;
+        }
 
-
-
+        anim.SetBool(animatorParameter, true);
     }
 
-    public void HeavyAttack(InputAction.CallbackContext ctx)
-    {
-        if (isAttacking) return;
-        isAttacking = true;
-        animator.SetBool("HeavyCombo", true);
-    }
-
-    public void SpecialAttack(InputAction.CallbackContext ctx)
-    {
-        if (isAttacking) return;
-        if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
-    }
     public void InitLock()
     {
-        StartCoroutine(playerMovement.LockMovement(animator.GetCurrentAnimatorClipInfo(1).Length));
+        StartCoroutine(_playerMovement.LockMovement(anim.GetCurrentAnimatorClipInfo(1).Length));
     }
+
     public void AnimationStarted()
     {
-        if (animator.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
-        else if (animator.GetBool("AshOfWar")) SetAttackState(WeaponStats.AttackState.Special);
+        if (anim.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
+        else if (anim.GetBool("AshOfWar")) SetAttackState(WeaponStats.AttackState.Special);
         else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
         ResetAttackStates();
-        canSwap.canSwitch = false;
+        _switchWeapon.canSwitch = false;
     }
+
     public void AttackingEnds()
     {
         isAttacking = false;
-        hitD.hits.Clear();
-        canSwap.canSwitch = true;
+        _hitDetection.hits.Clear();
+        _switchWeapon.canSwitch = true;
     }
 
     public void SetAttackState(WeaponStats.AttackState state)
     {
-        hitD.gameObject.GetComponent<WeaponStats>().currentState = state;
+        _hitDetection.gameObject.GetComponent<WeaponStats>().currentState = state;
     }
 
     public void ResetAttackStates()
     {
-        animator.SetBool("ShouldGoNextCombo", false);
-        animator.SetBool("HeavyCombo", false);
-        animator.SetBool("AshOfWar", false);
+        anim.SetBool("ShouldGoNextCombo", false);
+        anim.SetBool("HeavyCombo", false);
+        anim.SetBool("AshOfWar", false);
     }
 
-    public void RandomLightAttack()
+    public void RandomAudio(AudioClip[] clips)
     {
-        source.clip = lightSwings[Random.Range(0, lightSwings.Length)];
-        source.Play();
-
-    }
-
-    public void RandomHeavyAttack()
-    {
-        source.clip = heavySwings[Random.Range(0, heavySwings.Length)];
-        source.Play();
+        _audioSource.clip = clips[Random.Range(0, clips.Length)];
+        _audioSource.Play();
     }
 
 }

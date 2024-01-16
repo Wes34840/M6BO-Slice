@@ -1,7 +1,7 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor (typeof(EnemyFOV))]
+[CustomEditor(typeof(EnemyFOV))]
 
 public class EnemyFOVVisual : Editor
 {

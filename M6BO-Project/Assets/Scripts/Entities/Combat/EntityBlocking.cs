@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class EntityBlocking : MonoBehaviour
 {
-    public EntityHitbox hitboxScript;
-    public Animator anim;
-    public bool canBlock;
+    private EntityHitbox _hitboxScript;
+    private Animator _anim;
+
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        _hitboxScript = GetComponentInChildren<EntityHitbox>();
+        _anim = GetComponent<Animator>();
     }
+
     public void OnBlockPress(InputAction.CallbackContext ctx)
     {
         switch (ctx.ReadValue<float>())
@@ -23,15 +25,19 @@ public class EntityBlocking : MonoBehaviour
                 ToggleBlocking(true);
                 break;
         }
+
     }
+
     public void ToggleBlocking(bool set)
     {
-        anim.SetBool("isBlocking", set);
-        StartCoroutine(animationDelay(set));
+        _anim.SetBool("isBlocking", set);
+        StartCoroutine(WaitForAnimationDelay(set));
     }
-    public IEnumerator animationDelay(bool set)
+
+    public IEnumerator WaitForAnimationDelay(bool set)
     {
-        yield return new WaitForSeconds(anim.runtimeAnimatorController.animationClips.First(i => i.name == "Blocking").length / 10);
-        hitboxScript.isBlocking = set;
+        yield return new WaitForSeconds(_anim.runtimeAnimatorController.animationClips.First(i => i.name == "Blocking").length / 10);
+        _hitboxScript.isBlocking = set;
     }
+
 }
