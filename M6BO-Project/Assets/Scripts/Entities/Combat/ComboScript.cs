@@ -8,9 +8,15 @@ public class ComboScript : MonoBehaviour
     public HitDetection hitD;
     public SwitchWeapon canSwap;
     public PlayerMovement playerMovement;
+    public AudioClip[] lightSwings;
+    public AudioClip[] heavySwings;
+    private AudioSource source;
     void Start()
     {
         animator = GetComponent<Animator>();
+        hitD = GetComponentInChildren<HitDetection>();
+        source = GetComponent<AudioSource>();
+
     }
 
     public void LightAttack(InputAction.CallbackContext ctx)
@@ -18,6 +24,9 @@ public class ComboScript : MonoBehaviour
         if (isAttacking) return;
         isAttacking = true;
         animator.SetBool("ShouldGoNextCombo", true);
+
+
+
     }
 
     public void HeavyAttack(InputAction.CallbackContext ctx)
@@ -62,6 +71,19 @@ public class ComboScript : MonoBehaviour
         animator.SetBool("ShouldGoNextCombo", false);
         animator.SetBool("HeavyCombo", false);
         animator.SetBool("AshOfWar", false);
+    }
+
+    public void RandomLightAttack()
+    {
+        source.clip = lightSwings[Random.Range(0, lightSwings.Length)];
+        source.Play();
+
+    }
+
+    public void RandomHeavyAttack()
+    {
+        source.clip = heavySwings[Random.Range(0, heavySwings.Length)];
+        source.Play();
     }
 
 }
