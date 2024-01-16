@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerStats = GetComponent<EntityStats>();
         rb = GetComponent<Rigidbody>();
-        Audio= GetComponent<AudioSource>();
+        Audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
 
     }
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // ctx = the value that is given when the action is called, you can see the type of the variable in the Player Input Actions, the Action you are calling and looking at the "Control Type"
     {
         Vector3 movementInput = ctx.ReadValue<Vector3>();
-        inputDir = new Vector3(horizontalInput.x, 0, horizontalInput.z);
+        inputDir = new Vector3(movementInput.x, 0, movementInput.z);
         SetAnimInput(movementInput);
         WalkingNoise(movementInput);
     }
@@ -38,15 +38,15 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("VerticalMod", input.z);
     }
 
-    public void WalkingNoise(Vector3 input )
+    public void WalkingNoise(Vector3 input)
     {
         Audio.PlayOneShot(walkingClip);
-        if(input == Vector3.zero)
+        if (input == Vector3.zero)
         {
             Audio.Stop();
         }
     }
-    
+
     public IEnumerator LockMovement(float duration)
     {
         canMove = false;
@@ -60,17 +60,17 @@ public class PlayerMovement : MonoBehaviour
         if (canMove) ApplyControlMotion();
         ApplyGravity(currGrav);
     }
-    
+
     private void ApplyControlMotion()
     {
         rb.velocity = ((transform.forward * inputDir.z) + (transform.right * inputDir.x)) * playerStats.movementSpeed;
     }
-    
+
     private float GetGravity()
     {
         return rb.velocity.y;
     }
-    
+
     private void ApplyGravity(float grav)
     {
         rb.velocity = new Vector3(rb.velocity.x, grav, rb.velocity.z);
