@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyParentAnimScript : MonoBehaviour
@@ -16,18 +14,17 @@ public class EnemyParentAnimScript : MonoBehaviour
 
     public void StopAgent()
     {
-        agent.enabled = false;
+        agent.isStopped = true;
     }
 
     public void StartAgent()
     {
-        agent.enabled = true;
+        agent.isStopped = false;
     }
 
     public void StartLunge()
     {
         Vector3 dir = (agent.steeringTarget - transform.position).normalized;
-        Debug.Log(dir);
         lungeScript.GetLungeDirection(dir);
 
         lungeScript.isLunging = true;

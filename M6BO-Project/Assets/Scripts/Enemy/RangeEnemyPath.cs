@@ -1,81 +1,71 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class RangeEnemyPath : MonoBehaviour
+public class RangeEnemyPath : PathingAI
 {
-    [SerializeField] NavMeshAgent agent;
-    EntityStats stats;
-
-    public Transform model;
-
-    public bool awoken, isFleeing;
-    private EnemyFOV fov;
-    private float aggroTimer;
-    void Start()
+    public int maxDist;
+    public bool isFleeing = false;
+    public GameObject playNode, runNode;
+    public EnemyRangeAttack attack;
+    public override void Start()
     {
-        model = transform.GetChild(0);
-        agent = GetComponent<NavMeshAgent>();
-        stats = GetComponent<EntityStats>();
-        fov = GetComponent<EnemyFOV>();
-        agent.isStopped = true;
-        agent.speed = stats.movementSpeed;
+        GetAll();
+        attack = GetComponent<EnemyRangeAttack>();
     }
-
-    private void Update()
+    public override void CheckForPlayer()
     {
-        aggroTimer -= Time.deltaTime;
-
-        if (isFleeing) return;
-
-        Vector3 targetPos = fov.FindVisibleTargets();
-        if (targetPos != new Vector3() && agent.enabled)
+        Transform target = fov.FindVisibleTargets();
+        if (target != null && agent.enabled)
         {
+            Vector3 targetPos = target.position;
             if (!awoken)
             {
                 agent.isStopped = false;
                 awoken = true;
             }
-            agent.stoppingDistance = 8;
-            agent.SetDestination(targetPos);
             fov.viewAngle = 360;
             aggroTimer = 20;
 
-            //RaycastHitAll hit = 
+            if (isFleeing) return;
 
+            agent.stoppingDistance = maxDist + 5;
 
-
-            if (agent.remainingDistance < 5)
-            {
-                isFleeing = true;
-                agent.SetDestination((agent.destination - transform.position).normalized * stats.movementSpeed * -3);
-                StartCoroutine(FleeFromPlayer());
-            }
+            agent.SetDestination(targetPos);
+            playNode.transform.position = targetPos;
+            CheckIfShouldFlee();
+            if (isFleeing) return;
+            CheckIfShouldShoot(target);
 
         }
-
-        if (targetPos == new Vector3()) agent.stoppingDistance = 0;
-
-        model.rotation = UpdateDirection(agent.steeringTarget);
-
-        if (aggroTimer <= 0)
-        {
-            fov.viewAngle = 190;
-        }
+        else agent.stoppingDistance = 0;
     }
-
-    private Quaternion UpdateDirection(Vector3 target)
+    public override void HandleRotation()
     {
-        Vector3 lookDir = (target - transform.position).normalized;
-        Quaternion lookRot = Quaternion.LookRotation(new Vector3(lookDir.x, 0, lookDir.z));
-        return Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5);
+        if (agent.remainingDistance < agent.stoppingDistance) model.rotation = UpdateDirection(agent.destination);
+        else model.rotation = UpdateDirection(agent.steeringTarget);
     }
 
+    private void CheckIfShouldFlee()
+    {
+        if (agent.remainingDistance < maxDist && (agent.destination - transform.position).magnitude < maxDist)
+        {
+            isFleeing = true;
+            Vector3 dest = (agent.destination - transform.position);
+            agent.SetDestination(-dest * 5); // run away from player in opposite direction
+            runNode.transform.position = agent.destination;
+            StartCoroutine(FleeFromPlayer());
+        }
+    }
+    private void CheckIfShouldShoot(Transform target)
+    {
+        if (!attack.onCooldown) attack.ShootProjectile(target);
+    }
     private IEnumerator FleeFromPlayer()
     {
         agent.stoppingDistance = 0;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         isFleeing = false;
+        agent.stoppingDistance = maxDist + 5;
     }
+
 }

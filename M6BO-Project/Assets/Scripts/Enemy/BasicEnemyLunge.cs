@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BasicEnemyLunge : MonoBehaviour
 {
@@ -11,13 +9,13 @@ public class BasicEnemyLunge : MonoBehaviour
     void Start()
     {
         stats = GetComponent<EntityStats>();
-        rb = GetComponent<Rigidbody>();        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.drag = 40;
+        //rb.drag = 40;
         if (isLunging)
         {
             rb.drag = 0;
