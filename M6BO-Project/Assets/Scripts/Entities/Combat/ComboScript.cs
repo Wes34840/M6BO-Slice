@@ -10,15 +10,19 @@ public class ComboScript : MonoBehaviour
     private PlayerMovement _playerMovement;
     [SerializeField] private AudioClip[] _lightSwings;
     [SerializeField] private AudioClip[] _heavySwings;
-    private List<AudioClip[]> _audioClipArrays;
+    private List<AudioClip[]> _audioClipArrays = new List<AudioClip[]>();
     private AudioSource _audioSource;
+    private Rigidbody _rb;
+    public enum AudioType { Light, Heavy };
     void Start()
     {
         anim = GetComponent<Animator>();
         _hitDetection = GetComponentInChildren<HitDetection>();
         _playerMovement = GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
-        _audioClipArrays = new List<AudioClip[]>() { _lightSwings, _heavySwings };
+        _audioClipArrays.Add(_lightSwings);
+        _audioClipArrays.Add(_heavySwings);
+        _rb = GetComponent<Rigidbody>();
     }
 
     public void Attack(string animatorParameter)
@@ -36,7 +40,8 @@ public class ComboScript : MonoBehaviour
 
     public void InitLock()
     {
-        StartCoroutine(_playerMovement.LockMovement(anim.GetCurrentAnimatorClipInfo(1).Length));
+        _rb.velocity = Vector3.zero;
+        StartCoroutine(_playerMovement.LockMovement(anim.GetCurrentAnimatorClipInfo(1).Length + 0.3f));
     }
 
     public void AnimationStarted()
@@ -68,7 +73,7 @@ public class ComboScript : MonoBehaviour
         anim.SetBool("AshOfWar", false);
     }
 
-    public void PlayRandomAudio(WeaponStats.AttackState state)
+    public void PlayRandomAudio(AudioType state)
     {
         AudioClip[] clips = _audioClipArrays[(int)state];
         _audioSource.clip = clips[Random.Range(0, clips.Length)];
