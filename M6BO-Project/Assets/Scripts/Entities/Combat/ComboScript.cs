@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ComboScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ComboScript : MonoBehaviour
     private PlayerMovement _playerMovement;
     [SerializeField] private AudioClip[] _lightSwings;
     [SerializeField] private AudioClip[] _heavySwings;
+    private List<AudioClip[]> _audioClipArrays;
     private AudioSource _audioSource;
     void Start()
     {
@@ -16,6 +18,7 @@ public class ComboScript : MonoBehaviour
         _hitDetection = GetComponentInChildren<HitDetection>();
         _playerMovement = GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
+        _audioClipArrays = new List<AudioClip[]>() { _lightSwings, _heavySwings };
     }
 
     public void Attack(string animatorParameter)
@@ -60,13 +63,14 @@ public class ComboScript : MonoBehaviour
 
     public void ResetAttackStates()
     {
-        anim.SetBool("ShouldGoNextCombo", false);
+        anim.SetBool("LightCombo", false);
         anim.SetBool("HeavyCombo", false);
         anim.SetBool("AshOfWar", false);
     }
 
-    public void RandomAudio(AudioClip[] clips)
+    public void PlayRandomAudio(WeaponStats.AttackState state)
     {
+        AudioClip[] clips = _audioClipArrays[(int)state];
         _audioSource.clip = clips[Random.Range(0, clips.Length)];
         _audioSource.Play();
     }

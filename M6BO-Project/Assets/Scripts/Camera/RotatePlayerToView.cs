@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class RotatePlayerToView : MonoBehaviour
 {
-    public Transform cam;
-    public PlayerMovement movement;
+    [SerializeField] private Transform _cam;
+    [SerializeField] private PlayerMovement _movement;
     // Update is called once per frame
     void Update()
     {
-        if (movement.canMove) transform.rotation = UpdateDirection(cam.position);
+        if (_movement.canMove) transform.rotation = UpdateDirection(_cam.position);
     }
     public Quaternion UpdateDirection(Vector3 target)
     {

@@ -6,7 +6,7 @@ public class SwitchWeapon : MonoBehaviour
 {
     [SerializeField] private Animator _anim;
     public GameObject halberd;
-    [SerializeField] private GameObject _sword;
+    public GameObject sword;
     public GameObject currentWeapon;
     public bool canSwitch;
     private float delay = 0.5f;
@@ -14,6 +14,7 @@ public class SwitchWeapon : MonoBehaviour
     private void Start()
     {
         _anim = GetComponentInParent<Animator>();
+        currentWeapon = transform.GetChild(0).gameObject;
     }
 
     public void OnSwitch(InputAction.CallbackContext ctx)
@@ -23,28 +24,20 @@ public class SwitchWeapon : MonoBehaviour
         switch (input)
         {
             case -1:
-                SwitchToHalberd();
+                SwitchTo(halberd, sword, 1, 0);
                 break;
             case 1:
-                SwitchToSword();
+                SwitchTo(sword, halberd, 0, 1);
                 break;
         }
     }
 
-    public void SwitchToHalberd()
+    public void SwitchTo(GameObject weapon1, GameObject weapon2, int top, int bottom)
     {
-        halberd.SetActive(true);
-        _sword.SetActive(false);
-        currentWeapon = halberd;
-        SwitchLayers(1, 0);
-    }
-
-    public void SwitchToSword()
-    {
-        halberd.SetActive(false);
-        _sword.SetActive(true);
-        currentWeapon = _sword;
-        SwitchLayers(0, 1);
+        weapon1.SetActive(true);
+        weapon2.SetActive(false);
+        currentWeapon = weapon1;
+        SwitchLayers(top, bottom);
     }
 
     public void SwitchLayers(int top, int bottom)

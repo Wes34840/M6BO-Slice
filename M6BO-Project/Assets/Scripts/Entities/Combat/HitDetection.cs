@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class HitDetection : MonoBehaviour
 {
-    public ComboScript comboScript;
+    [SerializeField] private ComboScript _comboScript;
     public List<Collider> hits = new List<Collider>();
 
     private void OnTriggerEnter(Collider other)
     {
-        if (comboScript.isAttacking && other.CompareTag("HitBox") && !hits.Contains(other))
+        if (_comboScript.isAttacking && other.CompareTag("HitBox") && !hits.Contains(other))
         {
             hits.Add(other);
             other.GetComponent<EntityHitbox>().TakeDamage(GetComponent<WeaponStats>());

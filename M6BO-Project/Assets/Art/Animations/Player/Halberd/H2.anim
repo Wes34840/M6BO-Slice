@@ -82735,11 +82735,11 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.18333334
-    functionName: RandomHeavyAttack
+    functionName: PlayRandomAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 2
     messageOptions: 0
   - time: 0.26666668
     functionName: AnimationStarted
