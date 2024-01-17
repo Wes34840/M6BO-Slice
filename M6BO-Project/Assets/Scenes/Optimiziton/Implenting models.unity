@@ -922,12 +922,12 @@ PrefabInstance:
     - target: {fileID: 106516176417210517, guid: 7b316a376e58b5d46b487dee32d389d5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3505165
+      value: 0.35051653
       objectReference: {fileID: 0}
     - target: {fileID: 106516176417210517, guid: 7b316a376e58b5d46b487dee32d389d5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12690446
+      value: -0.12690449
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b316a376e58b5d46b487dee32d389d5, type: 3}
@@ -945,6 +945,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3525479140033381557, guid: 59a14ee927bc94140972895e8dcf24f4, type: 3}
+--- !u!1 &1609757446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1509687976536617469, guid: 8bfe74c78f87ef0449627fa72b3add29,
+    type: 3}
+  m_PrefabInstance: {fileID: 5648729307930481556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1609757448
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609757446}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6b199954d39abe4ab95523397ca352d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!64 &1652098108
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2963,6 +2989,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509687976536617469, guid: 8bfe74c78f87ef0449627fa72b3add29,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1540242709888466340, guid: 8bfe74c78f87ef0449627fa72b3add29,
         type: 3}
       propertyPath: m_Enabled
@@ -2988,6 +3019,16 @@ PrefabInstance:
       propertyPath: hitSounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 0d5cfc0968952a74eba55039aa26ecb0, type: 3}
+    - target: {fileID: 3244611579657014786, guid: 8bfe74c78f87ef0449627fa72b3add29,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1609757448}
+    - target: {fileID: 3486645156163437328, guid: 8bfe74c78f87ef0449627fa72b3add29,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3706896347068152387, guid: 8bfe74c78f87ef0449627fa72b3add29,
         type: 3}
       propertyPath: health
@@ -3124,5 +3165,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8227104872002707071, guid: 8bfe74c78f87ef0449627fa72b3add29,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1609757448}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bfe74c78f87ef0449627fa72b3add29, type: 3}

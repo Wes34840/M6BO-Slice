@@ -11,11 +11,12 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (other.transform == transform.parent) return;
 
-        if (other.CompareTag("HitBox") && !cooldown && enemyFOV.FindVisibleTargets() == null)
+        if (other.CompareTag("HitBox") && !cooldown)
         {
             anim.SetTrigger("Attack");
             cooldown = true;
             StartCoroutine(WaitForCooldown());
+            
         }
     }
 
