@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     private Animator _anim;
     public AudioClip walkingClip;
-    private AudioSource _audio;
+    private AudioSource _audioSource;
     public Vector3 inputDirection;
     public bool canMove = true;
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _playerStats = GetComponent<EntityStats>();
         _rb = GetComponent<Rigidbody>();
-        _audio = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
         _anim = GetComponent<Animator>();
     }
 
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movementInput = ctx.ReadValue<Vector3>();
         inputDirection = new Vector3(movementInput.x, 0, movementInput.z);
         SetAnimInput(movementInput);
-        StartWalkingNoise(movementInput);
+        DetermineWalkingSound(movementInput);
     }
 
     public void SetAnimInput(Vector3 input)
@@ -40,12 +40,16 @@ public class PlayerMovement : MonoBehaviour
         _anim.SetFloat("VerticalMod", input.z);
     }
 
-    public void StartWalkingNoise(Vector3 input)
+    public void DetermineWalkingSound(Vector3 input)
     {
-        _audio.PlayOneShot(walkingClip);
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.clip = walkingClip;
+            _audioSource.Play();
+        }
         if (input == Vector3.zero)
         {
-            _audio.Stop();
+            _audioSource.Stop();
         }
 
     }

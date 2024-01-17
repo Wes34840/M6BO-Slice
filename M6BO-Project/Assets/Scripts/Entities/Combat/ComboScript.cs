@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ComboScript : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class ComboScript : MonoBehaviour
 
     public void Attack(string animatorParameter)
     {
+        Debug.Log("Called");
         if (isAttacking) return;
         isAttacking = true;
         if (_switchWeapon.currentWeapon == _switchWeapon.halberd)
@@ -38,10 +40,19 @@ public class ComboScript : MonoBehaviour
         anim.SetBool(animatorParameter, true);
     }
 
-    public void InitLock()
+    public void ToggleMovementLock(int i)
     {
         _rb.velocity = Vector3.zero;
-        StartCoroutine(_playerMovement.LockMovement(anim.GetCurrentAnimatorClipInfo(1).Length + 0.3f));
+        switch (i)
+        {
+            case 0:
+                _playerMovement.canMove = true;
+                break;
+            case 1:
+                _playerMovement.canMove = false;
+                break;
+        }
+
     }
 
     public void AnimationStarted()
