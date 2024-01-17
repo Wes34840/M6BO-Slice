@@ -610,6 +610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bucket
       objectReference: {fileID: 0}
+    - target: {fileID: 5890262170108380785, guid: f5306de1e6207e04abbd04efaa1d9505,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f38022d994d243c4ab02b6a39ae87d1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5306de1e6207e04abbd04efaa1d9505, type: 3}
 --- !u!1001 &3946681998380960725
