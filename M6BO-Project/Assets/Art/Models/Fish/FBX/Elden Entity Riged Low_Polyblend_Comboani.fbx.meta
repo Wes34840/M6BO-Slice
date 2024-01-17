@@ -16,23 +16,20 @@ ModelImporter:
       74: 3374748389425109202
     second: rig|rigAction
   - first:
-      74: 7662823540660510047
-    second: rig|SwordAction
+      74: -1205161483587071362
+    second: LightAttack1
   - first:
-      74: -1962111147472363628
-    second: Attack 1
+      74: -1349391060163861786
+    second: LightAttack2
   - first:
-      74: 296130795608717920
-    second: Attack 2
+      74: -7707783072607937859
+    second: LighAttack3
   - first:
-      74: -4084516132872533229
-    second: Attack 3
+      74: -7523799387860143440
+    second: Dodge
   - first:
-      74: -3100369314251171874
-    second: Idle
-  - first:
-      74: -6710666379904997511
-    second: Attack back to Idle
+      74: 3981345403795791605
+    second: Player Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -67,7 +64,7 @@ ModelImporter:
       takeName: rig|Greatsword two hand stance
       internalID: 0
       firstFrame: 0
-      lastFrame: 139
+      lastFrame: 158
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -179,40 +176,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig|SwordAction
-      takeName: rig|SwordAction
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 38
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Attack 1
+      name: LightAttack1
       takeName: rig|Greatsword two hand stance
       internalID: 0
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -237,7 +205,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack 2
+      name: LightAttack2
       takeName: rig|Greatsword two hand stance
       internalID: 0
       firstFrame: 36
@@ -266,7 +234,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack 3
+      name: LighAttack3
       takeName: rig|Greatsword two hand stance
       internalID: 0
       firstFrame: 75
@@ -295,11 +263,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: Dodge
       takeName: rig|Greatsword two hand stance
       internalID: 0
-      firstFrame: 0
-      lastFrame: 0
+      firstFrame: 139
+      lastFrame: 158
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -324,11 +292,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Attack back to Idle
+      name: Player Idle
       takeName: rig|Greatsword two hand stance
       internalID: 0
-      firstFrame: 120
-      lastFrame: 139
+      firstFrame: 0
+      lastFrame: 0
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
