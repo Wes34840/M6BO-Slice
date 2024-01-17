@@ -2,15 +2,15 @@
 
 public class EntityHitbox : MonoBehaviour
 {
-    public EntityStats stats;
-    public EntityPoise poise;
+    private EntityStats _entityStats;
+    private EntityPoise _poiseScript;
     public bool isBlocking;
     public bool isDodging;
 
     public void TakeDamage(WeaponStats weapon)
     {
         PlayAudio();
-        /*
+
         transform.parent.TryGetComponent(out PathingAI path);
         if (path != null) path.TryWakeUp();
         if (isDodging) return;
@@ -19,31 +19,32 @@ public class EntityHitbox : MonoBehaviour
         Debug.Log("Triggered Damage");
         if (isBlocking)
         {
-            stats.health -= damage * (stats.blockingPower / 10);
-            poise.CurrentPoise -= poiseDamage * (stats.blockingPower / 10);
+            _entityStats.health -= damage * (_entityStats.blockingPower / 10);
+            _poiseScript.currentPoise -= poiseDamage * (_entityStats.blockingPower / 10);
         }
+
         else
         {
-            stats.health -= damage;
-            poise.CurrentPoise -= poiseDamage;
+            _entityStats.health -= damage;
+            _poiseScript.currentPoise -= poiseDamage;
             Debug.Log(damage);
             Debug.Log(poiseDamage);
         }
-        */
+
     }
 
     public void PlayAudio()
     {
-        
+
     }
+
     public float CalculateDamage(WeaponStats weapon)
     {
         Debug.Log(weapon.damage);
         Debug.Log(weapon.currentState);
         return weapon.damage * (int)weapon.currentState;
-        
     }
-    // this feels extremely unncsessary 
+    // this feels extremely unnecessary 
     public float CalculatePoise(WeaponStats weapon)
     {
         return weapon.poiseDamage * (int)weapon.currentState;
