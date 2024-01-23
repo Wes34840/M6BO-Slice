@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8922759210201861963}
   - component: {fileID: 5511237916042608878}
   - component: {fileID: 7754968651827164196}
-  - component: {fileID: 7514700999851272260}
   - component: {fileID: 7514700999851272261}
   - component: {fileID: 693005832}
+  - component: {fileID: -1647871966068033618}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7514700999851272260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8115436597628704241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07259d78140888a45a95fd0ed0157506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combo: {fileID: 0}
-  hits: []
 --- !u!114 &7514700999851272261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +115,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: 2ed60515d353c254cb348beb5ff2d534, type: 3}
+--- !u!114 &-1647871966068033618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115436597628704241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993e0a4bb63601d42ae93dc48c2e8890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _comboScript: {fileID: 0}
+  _hitSounds: []

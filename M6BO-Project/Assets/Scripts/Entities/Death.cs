@@ -17,7 +17,7 @@ public class Death : MonoBehaviour
     {
         if (stats.health <= 0)
         {
-            combo.animator.SetBool("isDead", true);
+            combo.anim.SetBool("isDead", true);
             combo.GetComponent<ComboScript>().enabled = false;
             StartCoroutine(Delay());
 
