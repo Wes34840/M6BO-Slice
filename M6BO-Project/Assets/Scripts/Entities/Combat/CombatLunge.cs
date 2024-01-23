@@ -4,6 +4,7 @@ public class CombatLunge : MonoBehaviour
 {
     public Rigidbody rb;
     public bool isLunging;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();

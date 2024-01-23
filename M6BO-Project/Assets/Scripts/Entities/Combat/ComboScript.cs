@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class ComboScript : MonoBehaviour
 {
     public Animator anim;
@@ -15,7 +16,7 @@ public class ComboScript : MonoBehaviour
     public enum AudioType { Light, Heavy };
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>()
         _weaponDamageTrigger = _switchWeapon.currentWeapon.GetComponent<TriggerDamage>();
         _playerMovement = GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
@@ -26,6 +27,7 @@ public class ComboScript : MonoBehaviour
 
     public void Attack(string animatorParameter)
     {
+        Debug.Log("Called");
         if (isAttacking) return;
         isAttacking = true;
         _switchWeapon.canSwitch = false;
@@ -60,6 +62,7 @@ public class ComboScript : MonoBehaviour
         isAttacking = true;
         ResetAttackStates();
     }
+
     public void AttackingEnds()
     {
         isAttacking = false;

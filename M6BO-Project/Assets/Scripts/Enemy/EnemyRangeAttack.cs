@@ -1,29 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class EnemyRangeAttack : MonoBehaviour
 {
-    public GameObject prefab;
+    [SerializeField] private GameObject _prefab;
     public bool onCooldown;
-    public Transform firingPoint;
+    [SerializeField] private Transform _firingPoint;
+
     public void ShootProjectile(Transform target)
     {
-        GameObject proj = Instantiate(prefab, firingPoint.position, Quaternion.identity);
-        proj.GetComponent<CollisionDamage>().parentColl = GetComponentInChildren<Collider>();
-        proj.GetComponent<Rigidbody>().velocity = GetProjectileVelocity(target);
+        GameObject projectile = Instantiate(_prefab, _firingPoint.position, Quaternion.identity);
+        projectile.GetComponent<CollisionDamage>().parentColl = GetComponentInChildren<Collider>();
+        projectile.GetComponent<Rigidbody>().velocity = GetProjectileVelocity(target);
         StartCoroutine(WaitForCooldown(5));
     }
+
     private Vector3 GetProjectileVelocity(Transform target)
     {
         Vector3 direction = (target.position - transform.position);
         return new Vector3(direction.x * 2, (direction.y + 1f) * 1.2f, direction.z * 2);
     }
 
-    private IEnumerator WaitForCooldown(float timer)
+    private IEnumerator WaitForCooldown(float timeInSeconds)
     {
         onCooldown = true;
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(timeInSeconds);
         onCooldown = false;
     }
+
 }

@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  stats: {fileID: 0}
+  entityStats: {fileID: 0}
   model: {fileID: 0}
   awoken: 0
-  fov: {fileID: 0}
+  enemyfov: {fileID: 0}
   aggroTimer: 0
 --- !u!114 &7161704629696279359
 MonoBehaviour:
@@ -210,12 +210,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewRadius: 25
   viewAngle: 190
-  targetMask:
+  _targetMask:
     serializedVersion: 2
-    m_Bits: 64
-  ObstacleMask:
+    m_Bits: 0
+  _obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
 --- !u!114 &9013352081459955582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8501601e81bce43822848a690375b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   movementSpeed: 3
   rotSpeed: 3
   blockingPower: 0
@@ -257,9 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   maxPoise: 10
-  initialStun: 0
 --- !u!114 &1153819917176319882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,8 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be57eb7eaa21aa44e840744f0417a984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  anim: {fileID: 9036229475907303235}
+  _anim: {fileID: 9036229475907303235}
+  _enemyFOV: {fileID: 7161704629696279359}
 --- !u!135 &7938014789554304823
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -964,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cfe1306fdeda44cacb27b05385b1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dam: {fileID: 6558468067029614745}
+  _damageTrigger: {fileID: 6558468067029614745}
 --- !u!114 &1312504052438813732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,9 +987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 9013352081459955582}
-  poise: {fileID: 3596279720548306552}
   isBlocking: 0
+  isDodging: 0
 --- !u!1 &3969508446318380391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1834,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060937643622027662, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
+        type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060937643622027662, guid: d1907f44bb5b00d4f8a73f7c3309a4f2,
+        type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1907f44bb5b00d4f8a73f7c3309a4f2, type: 3}

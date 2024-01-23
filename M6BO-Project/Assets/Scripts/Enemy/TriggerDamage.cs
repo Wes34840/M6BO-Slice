@@ -10,6 +10,7 @@ public class TriggerDamage : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField] private AudioClip[] _hitSounds;
     private AudioClip shootClip;
+
     void Start()
     {
         _weaponStats = GetComponent<WeaponStats>();
@@ -18,7 +19,6 @@ public class TriggerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (hits.Contains(other) || other.CompareTag("TriggerBox") || other.CompareTag("Weapon")) return;
 
         other.GetComponent<EntityHitbox>().TakeDamage(_weaponStats);
@@ -33,4 +33,5 @@ public class TriggerDamage : MonoBehaviour
     {
         hits.Clear();
     }
+
 }
