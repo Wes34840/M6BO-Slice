@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  stats: {fileID: 0}
+  entityStats: {fileID: 0}
   model: {fileID: 0}
   awoken: 0
-  fov: {fileID: 0}
+  enemyfov: {fileID: 0}
   aggroTimer: 0
 --- !u!114 &3244611579657014786
 MonoBehaviour:
@@ -109,12 +109,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewRadius: 25
   viewAngle: 190
-  targetMask:
+  _targetMask:
     serializedVersion: 2
-    m_Bits: 64
-  ObstacleMask:
+    m_Bits: 0
+  _obstacleMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
 --- !u!114 &3706896347068152387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,9 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   maxPoise: 10
-  initialStun: 0
 --- !u!114 &1559841181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe92c7b01d619247b5ed055fcb5283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 5648729308118659946}
-  healthStats: {fileID: 3706896347068152387}
+  _healthSlider: {fileID: 5648729308118659946}
+  _entityStats: {fileID: 3706896347068152387}
 --- !u!1 &5648729308186014063
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,10 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be57eb7eaa21aa44e840744f0417a984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  anim: {fileID: 3675908946328816254}
-  rb: {fileID: 2732290542776004526}
-  enemyFOV: {fileID: 3244611579657014786}
+  _anim: {fileID: 3675908946328816254}
+  _enemyFOV: {fileID: 3244611579657014786}
 --- !u!135 &2327568277215906314
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -995,7 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cfe1306fdeda44cacb27b05385b1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dam: {fileID: 1540242709888466340}
+  _damageTrigger: {fileID: 1540242709888466340}
 --- !u!114 &6652557839567040793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,8 +1016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 3706896347068152387}
-  poise: {fileID: 9190963085265564485}
   isBlocking: 0
   isDodging: 0
 --- !u!1001 &3334657685881744273

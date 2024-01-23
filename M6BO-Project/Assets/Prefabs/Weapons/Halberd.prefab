@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   poiseDamage: 15
-  currentState: 0
+  currentState: 1
 --- !u!114 &8496799330490454139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07259d78140888a45a95fd0ed0157506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combo: {fileID: 0}
+  comboScript: {fileID: 0}
   hits: []
 --- !u!64 &748931800
 MeshCollider:

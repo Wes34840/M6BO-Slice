@@ -4,15 +4,17 @@ using UnityEngine.UI;
 public class DisplayEntityPoise : MonoBehaviour
 {
     public EntityPoise poiseScript;
-    private Slider poiseSlider;
+    private Slider _poiseSlider;
+
     void Start()
     {
-        poiseSlider = GetComponent<Slider>();
-        poiseSlider.maxValue = poiseScript.maxPoise;
+        _poiseSlider = GetComponent<Slider>();
+        _poiseSlider.maxValue = poiseScript.maxPoise;
     }
 
     void Update()
     {
-        poiseSlider.value = poiseScript.CurrentPoise;
+        _poiseSlider.value = poiseScript.currentPoise;
     }
+
 }

@@ -4,10 +4,10 @@ using UnityEngine.AI;
 public class PathingAI : MonoBehaviour
 {
     [SerializeField] public NavMeshAgent agent;
-    public EntityStats stats;
+    public EntityStats entityStats;
     public Transform model;
     public bool awoken;
-    public EnemyFOV fov;
+    public EnemyFOV enemyfov;
     public float aggroTimer;
     public virtual void Start()
     {
@@ -25,23 +25,23 @@ public class PathingAI : MonoBehaviour
     {
         model = transform.GetChild(0);
         agent = GetComponent<NavMeshAgent>();
-        stats = GetComponent<EntityStats>();
-        fov = GetComponent<EnemyFOV>();
+        entityStats = GetComponent<EntityStats>();
+        enemyfov = GetComponent<EnemyFOV>();
         agent.isStopped = true;
         agent.updateRotation = false;
-        agent.speed = stats.movementSpeed;
+        agent.speed = entityStats.movementSpeed;
     }
 
     public virtual void CheckForPlayer()
     {
-        Transform target = fov.FindVisibleTargets();
+        Transform target = enemyfov.FindVisibleTargets();
         if (target != null) TryWakeUp();
         if (target != null && !agent.isStopped)
         {
             Vector3 targetPos = target.position;
             TryWakeUp();
             agent.SetDestination(targetPos);
-            fov.viewAngle = 360;
+            enemyfov.viewAngle = 360;
             aggroTimer = 20;
         }
     }
@@ -61,7 +61,7 @@ public class PathingAI : MonoBehaviour
         aggroTimer -= Time.deltaTime;
         if (aggroTimer <= 0)
         {
-            fov.viewAngle = 190;
+            enemyfov.viewAngle = 190;
         }
     }
 
@@ -71,7 +71,7 @@ public class PathingAI : MonoBehaviour
         lookDir = new Vector3(lookDir.x, 0, lookDir.z);
         if (lookDir.magnitude <= 0.1f && lookDir.magnitude >= -0.1f) return Quaternion.identity;
         Quaternion lookRot = Quaternion.LookRotation(lookDir);
-        return Quaternion.Lerp(model.rotation, lookRot, Time.deltaTime * stats.rotSpeed);
+        return Quaternion.Lerp(model.rotation, lookRot, Time.deltaTime * entityStats.rotSpeed);
     }
 
     public void TryWakeUp()
@@ -80,7 +80,7 @@ public class PathingAI : MonoBehaviour
         {
             agent.isStopped = false;
             awoken = true;
-            fov.viewAngle = 360;
+            enemyfov.viewAngle = 360;
             aggroTimer = 20;
         }
     }

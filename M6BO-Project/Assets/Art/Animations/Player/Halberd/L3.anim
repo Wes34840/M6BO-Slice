@@ -51521,14 +51521,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: InitLock
+    functionName: ToggleMovementLock
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 1
     messageOptions: 0
   - time: 0.083333336
-    functionName: RandomLightAttack
+    functionName: PlayRandomAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -51550,6 +51550,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.3333334
     functionName: AttackingEnds
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.3333334
+    functionName: ToggleMovementLock
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

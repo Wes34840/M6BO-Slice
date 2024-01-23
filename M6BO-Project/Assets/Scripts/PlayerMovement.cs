@@ -4,47 +4,54 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private EntityStats playerStats;
-    private Rigidbody rb;
-    private Animator anim;
+    private EntityStats _playerStats;
+    private Rigidbody _rb;
+    private Animator _anim;
     public AudioClip walkingClip;
-    private AudioSource Audio;
-    public Vector3 inputDir;
+    private AudioSource _audioSource;
+    public Vector3 inputDirection;
     public bool canMove = true;
 
     void Start()
     {
-        playerStats = GetComponent<EntityStats>();
-        rb = GetComponent<Rigidbody>();
-        Audio = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
-
+        _playerStats = GetComponent<EntityStats>();
+        _rb = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
+        _anim = GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// Transfers the input of the player to a vector, which is used in the update method to move the player.
+    /// Sets the input value in the animator so the walking animation starts/changes
+    /// </summary>
     public void OnMove(InputAction.CallbackContext ctx)
-    // ctx = the value that is given when the action is called, you can see the type of the variable in the Player Input Actions, the Action you are calling and looking at the "Control Type"
     {
         Vector3 movementInput = ctx.ReadValue<Vector3>();
-        inputDir = new Vector3(movementInput.x, 0, movementInput.z);
+        inputDirection = new Vector3(movementInput.x, 0, movementInput.z);
         SetAnimInput(movementInput);
-        WalkingNoise(movementInput);
+        DetermineWalkingSound(movementInput);
     }
 
     public void SetAnimInput(Vector3 input)
     {
-        anim.SetInteger("HorizontalInput", (int)input.x);
-        anim.SetInteger("VerticalInput", (int)input.z);
-        anim.SetFloat("HorizontalMod", input.x);
-        anim.SetFloat("VerticalMod", input.z);
+        _anim.SetInteger("HorizontalInput", (int)input.x);
+        _anim.SetInteger("VerticalInput", (int)input.z);
+        _anim.SetFloat("HorizontalMod", input.x);
+        _anim.SetFloat("VerticalMod", input.z);
     }
 
-    public void WalkingNoise(Vector3 input)
+    public void DetermineWalkingSound(Vector3 input)
     {
-        Audio.PlayOneShot(walkingClip);
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.clip = walkingClip;
+            _audioSource.Play();
+        }
         if (input == Vector3.zero)
         {
-            Audio.Stop();
+            _audioSource.Stop();
         }
+
     }
 
     public IEnumerator LockMovement(float duration)
@@ -63,16 +70,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyControlMotion()
     {
-        rb.velocity = ((transform.forward * inputDir.z) + (transform.right * inputDir.x)) * playerStats.movementSpeed;
+        _rb.velocity = ((transform.forward * inputDirection.z) + (transform.right * inputDirection.x)) * _playerStats.movementSpeed;
     }
 
     private float GetGravity()
     {
-        return rb.velocity.y;
+        return _rb.velocity.y;
     }
 
     private void ApplyGravity(float grav)
     {
-        rb.velocity = new Vector3(rb.velocity.x, grav, rb.velocity.z);
+        _rb.velocity = new Vector3(_rb.velocity.x, grav, _rb.velocity.z);
     }
 }

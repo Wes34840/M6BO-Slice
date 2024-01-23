@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
-    private EntityStats health;
-    
+    private EntityStats _entityStats;
+
     void Start()
     {
-        health= GetComponent<EntityStats>();
+        _entityStats = GetComponent<EntityStats>();
     }
 
-    
+
     void Update()
     {
-        if (health.health <= 0)
+        if (_entityStats.health <= 0)
         {
             Destroy(gameObject);
         }
