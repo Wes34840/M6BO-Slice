@@ -50,18 +50,18 @@ public class ComboScript : MonoBehaviour
         else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
         ResetAttackStates();
-        //canSwap.canSwitch = false;
+        canSwap.canSwitch = false;
     }
     public void AttackingEnds()
     {
         isAttacking = false;
-        //hitD.hits.Clear();
-        //canSwap.canSwitch = true;
+        hitD.hits.Clear();
+        canSwap.canSwitch = true;
     }
 
     public void SetAttackState(WeaponStats.AttackState state)
     {
-        //hitD.gameObject.GetComponent<WeaponStats>().currentState = state;
+        hitD.gameObject.GetComponent<WeaponStats>().currentState = state;
     }
 
     public void ResetAttackStates()
