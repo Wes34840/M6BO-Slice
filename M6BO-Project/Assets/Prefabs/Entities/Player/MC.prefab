@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 346658510}
   - component: {fileID: 346658511}
   - component: {fileID: 346658512}
-  - component: {fileID: 1897829767508364935}
+  - component: {fileID: 7925070440559991021}
   m_Layer: 5
   m_Name: PoiseSlider
   m_TagString: Untagged
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poiseScript: {fileID: 6042525838026371975}
---- !u!114 &1897829767508364935
+--- !u!114 &7925070440559991021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe92c7b01d619247b5ed055fcb5283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 483625473}
-  healthStats: {fileID: 1447678554503382751}
+  _healthSlider: {fileID: 483625473}
+  _entityStats: {fileID: 1447678554503382751}
 --- !u!1 &556991692
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,10 +794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 1447678554503382751}
-  poise: {fileID: 6042525838026371975}
   isBlocking: 0
   isDodging: 0
+  _hitSound: {fileID: 0}
 --- !u!136 &935189777
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -906,7 +905,7 @@ Transform:
   - {fileID: 5547196371279590534}
   m_Father: {fileID: 7214714381954127140}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -43.024334, y: 14.823459, z: 164.42992}
+  m_LocalEulerAnglesHint: {x: -58.70713, y: -30.771889, z: 174.45139}
 --- !u!1 &400569472122988457
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +969,7 @@ Transform:
   - {fileID: 1107228608439143530}
   m_Father: {fileID: 883079193421687896}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -87.87922, y: -4.1441526, z: 3.5301065}
+  m_LocalEulerAnglesHint: {x: -70.004326, y: 29.116764, z: -29.25169}
 --- !u!1 &486233793341036674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1522,7 @@ Transform:
   - {fileID: 4639080515841254481}
   m_Father: {fileID: 2860923052816249895}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 41.052505, y: 2.8805647, z: 6.5520353}
+  m_LocalEulerAnglesHint: {x: 26.223753, y: -4.4179516, z: -3.9598768}
 --- !u!1 &2156354369634476114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1620,7 @@ Transform:
   - {fileID: 6951070000518882999}
   m_Father: {fileID: 2904683555920115120}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 8.938784, y: 57.689793, z: -3.2114627}
+  m_LocalEulerAnglesHint: {x: 22.348421, y: -61.131546, z: -6.0136266}
 --- !u!1 &2426127147040783150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,17 +1727,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitD: {fileID: 0}
-  canSwap: {fileID: 1291735493}
-  playerMovement: {fileID: 1447678554503382757}
-  lightSwings:
+  anim: {fileID: 0}
+  isAttacking: 0
+  _weaponDamageTrigger: {fileID: 0}
+  _switchWeapon: {fileID: 1291735493}
+  _lightSwings:
   - {fileID: 8300000, guid: 7f318a6e855320348840ee1d75febb4d, type: 3}
   - {fileID: 8300000, guid: 4db9e40ad5f17ea4589055bcc6f1fb79, type: 3}
   - {fileID: 8300000, guid: ea4a7db68b0a2ef4c9c0b0eccad4158d, type: 3}
-  heavySwings:
-  - {fileID: 8300000, guid: e97e3c9c62f16924f9e619e0cc01b2c2, type: 3}
-  - {fileID: 8300000, guid: 05a46ae50e7daa44a92da0949adaad91, type: 3}
+  _heavySwings:
   - {fileID: 8300000, guid: 02589aaf71fc22d4eb658953cb959a94, type: 3}
+  - {fileID: 8300000, guid: 05a46ae50e7daa44a92da0949adaad91, type: 3}
+  - {fileID: 8300000, guid: e97e3c9c62f16924f9e619e0cc01b2c2, type: 3}
 --- !u!95 &1447678555878139671
 Animator:
   serializedVersion: 4
@@ -1749,7 +1749,7 @@ Animator:
   m_GameObject: {fileID: 2523232819522121482}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d576ab24a394a5479283c36d7dca0a5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 641a5d6f3f9edde45bfe8cb2a1101d42, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1787,9 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   maxPoise: 10
-  initialStun: 0
 --- !u!114 &5847339709885243208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,9 +1800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8b4b037414955498803c07b0610e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxScript: {fileID: 3347039110376085446}
-  anim: {fileID: 0}
-  canBlock: 0
 --- !u!114 &1447678554503382756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,8 +1812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58318643bd79e7543aed65c1e13ac287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combo: {fileID: 0}
+  entityStats: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1447678554503382757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1832,7 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingClip: {fileID: 8300000, guid: 1d50fc7a7f9cc5647a8444d5db7c3c56, type: 3}
-  inputDir: {x: 0, y: 0, z: 0}
+  inputDirection: {x: 0, y: 0, z: 0}
   canMove: 1
 --- !u!114 &660716328
 MonoBehaviour:
@@ -2000,7 +1995,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1969288071957396437}
         m_TargetAssemblyTypeName: DodgingScript, Assembly-CSharp
-        m_MethodName: InitDodge
+        m_MethodName: DodgeChildSupport
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2029,8 +2024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab6aec99ff747a49a1a66dbfad489ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  movement: {fileID: 1447678554503382757}
+  _cam: {fileID: 0}
+  _movement: {fileID: 1447678554503382757}
 --- !u!114 &1969288071957396437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,7 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74636a25980ccfa40ab8d371a84d24af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollForce: 4
+  _rollForce: 4
 --- !u!82 &7659347264790031058
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2428,7 +2423,7 @@ Transform:
   - {fileID: 1719439961371698979}
   m_Father: {fileID: 1107228608439143530}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 34.705383, y: 0.000042981075, z: -0.0000638095}
+  m_LocalEulerAnglesHint: {x: 17.184427, y: 12.167053, z: 8.291641}
 --- !u!1 &4549141090560163695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2775,7 @@ Transform:
   - {fileID: 8523526323659416309}
   m_Father: {fileID: 5547196371279590534}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 47.92907, y: -6.661938, z: -3.0892644}
+  m_LocalEulerAnglesHint: {x: 69.55815, y: 85.652466, z: 85.54472}
 --- !u!1 &5851644605672231399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,7 +3181,7 @@ Transform:
   - {fileID: 557468406681896179}
   m_Father: {fileID: 7189962699052293249}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 54.699345, y: -3.0709476, z: -5.607651}
+  m_LocalEulerAnglesHint: {x: 69.774734, y: 17.168743, z: 15.331924}
 --- !u!1 &6953179439642490329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,7 +3373,7 @@ Transform:
   - {fileID: 2860923052816249895}
   m_Father: {fileID: 6816832862258766363}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -54.46318, y: -9.575577, z: 3.9814746}
+  m_LocalEulerAnglesHint: {x: -69.65517, y: 11.350952, z: -7.8423786}
 --- !u!1 &7945021129183268836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,7 +3499,7 @@ Transform:
   - {fileID: 7189962699052293249}
   m_Father: {fileID: 7214714381954127140}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -56.12593, y: 18.416761, z: 56.53409}
+  m_LocalEulerAnglesHint: {x: -82.63387, y: 62.586594, z: 133.51552}
 --- !u!1 &8980628564144633004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df64e7f39df06af41991f3f0ae1da3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  _anim: {fileID: 0}
   halberd: {fileID: 1789695041667429228}
   sword: {fileID: 1789695040550065275}
   currentWeapon: {fileID: 0}
@@ -3595,9 +3590,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4535212311969835944}
     m_Modifications:
+    - target: {fileID: -1647871966068033618, guid: e22c255b225be9d4580a77ca2348de2e,
+        type: 3}
+      propertyPath: _comboScript
+      value: 
+      objectReference: {fileID: 7892294721207087341}
     - target: {fileID: 7514700999851272260, guid: e22c255b225be9d4580a77ca2348de2e,
         type: 3}
       propertyPath: combo
+      value: 
+      objectReference: {fileID: 7892294721207087341}
+    - target: {fileID: 7514700999851272260, guid: e22c255b225be9d4580a77ca2348de2e,
+        type: 3}
+      propertyPath: _comboScript
       value: 
       objectReference: {fileID: 7892294721207087341}
     - target: {fileID: 7514700999851272261, guid: e22c255b225be9d4580a77ca2348de2e,
@@ -3706,6 +3711,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4535212311969835944}
     m_Modifications:
+    - target: {fileID: 1622914365779657358, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: _comboScript
+      value: 
+      objectReference: {fileID: 7892294721207087341}
     - target: {fileID: 7383413535295658888, guid: 82ac46676fd9d034eb8695aec3bacb87,
         type: 3}
       propertyPath: m_RootOrder
@@ -3781,17 +3791,23 @@ PrefabInstance:
       propertyPath: poiseDamage
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 8496799330490454138, guid: 82ac46676fd9d034eb8695aec3bacb87,
-        type: 3}
-      propertyPath: currentState
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87,
         type: 3}
       propertyPath: combo
       value: 
       objectReference: {fileID: 7892294721207087341}
-    m_RemovedComponents: []
+    - target: {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: _comboScript
+      value: 
+      objectReference: {fileID: 7892294721207087341}
+    - target: {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: hits.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82ac46676fd9d034eb8695aec3bacb87, type: 3}
 --- !u!4 &1413451355576412630 stripped
 Transform:

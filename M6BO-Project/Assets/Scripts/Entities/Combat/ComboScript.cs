@@ -1,91 +1,103 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
-
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 public class ComboScript : MonoBehaviour
 {
-    internal Animator animator;
-    internal bool isAttacking;
-    public HitDetection hitD;
-    public SwitchWeapon canSwap;
-    public PlayerMovement playerMovement;
-    public AudioClip[] lightSwings;
-    public AudioClip[] heavySwings;
-    private AudioSource source;
+    public Animator anim;
+    public bool isAttacking;
+    [SerializeField] private TriggerDamage _weaponDamageTrigger;
+    [SerializeField] private SwitchWeapon _switchWeapon;
+    private PlayerMovement _playerMovement;
+    [SerializeField] private AudioClip[] _lightSwings;
+    [SerializeField] private AudioClip[] _heavySwings;
+    private List<AudioClip[]> _audioClipArrays = new List<AudioClip[]>();
+    private AudioSource _audioSource;
+    private Rigidbody _rb;
+    private bool _comboCooldown;
+
+    public enum AudioType { Light, Heavy };
     void Start()
     {
-        animator = GetComponent<Animator>();
-        hitD = GetComponentInChildren<HitDetection>();
-        source = GetComponent<AudioSource>();
-        canSwap.canSwitch = true;
-
+        anim = GetComponent<Animator>();
+        _weaponDamageTrigger = _switchWeapon.currentWeapon.GetComponent<TriggerDamage>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioClipArrays.Add(_lightSwings);
+        _audioClipArrays.Add(_heavySwings);
+        _rb = GetComponent<Rigidbody>();
     }
 
-    public void LightAttack(InputAction.CallbackContext ctx)
+    public void Attack(string animatorParameter)
     {
-        if (isAttacking) return;
-        isAttacking = true;
-        animator.SetBool("ShouldGoNextCombo", true);
+        if (isAttacking || _comboCooldown) return;
+        _switchWeapon.canSwitch = false;
+        if (_switchWeapon.currentWeapon == _switchWeapon.halberd)
+        {
+            anim.SetBool(animatorParameter, true);
+            return;
+        }
+
+        anim.SetBool(animatorParameter, true);
+    }
+
+    public void ToggleMovementLock(int i)
+    {
+        _rb.velocity = Vector3.zero;
+        Debug.Log(i);
+        switch (i)
+        {
+            case 0:
+                _playerMovement.canMove = true;
+                break;
+            case 1:
+                _playerMovement.canMove = false;
+                break;
+        }
 
     }
 
-    public void HeavyAttack(InputAction.CallbackContext ctx)
-    {
-        if (isAttacking) return;
-        isAttacking = true;
-        animator.SetBool("HeavyCombo", true);
-    }
-
-    public void SpecialAttack(InputAction.CallbackContext ctx)
-    {
-        if (isAttacking) return;
-        if (canSwap.currentWeapon == canSwap.halberd) animator.SetBool("AshOfWar", true);
-    }
-    public void InitLock()
-    {
-        StartCoroutine(playerMovement.LockMovement(animator.GetCurrentAnimatorClipInfo(1).Length));
-    }
     public void AnimationStarted()
     {
-        if (animator.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
-        else if (animator.GetBool("AshOfWar")) SetAttackState(WeaponStats.AttackState.Special);
+        if (anim.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
+        else if (anim.GetBool("AshOfWar")) SetAttackState(WeaponStats.AttackState.Special);
         else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
         ResetAttackStates();
-        canSwap.canSwitch= false;
-        
     }
+
     public void AttackingEnds()
     {
         isAttacking = false;
-        hitD.hits.Clear();
-       canSwap.canSwitch= true;
+        _weaponDamageTrigger.ClearHits();
+        _switchWeapon.canSwitch = true;
     }
 
     public void SetAttackState(WeaponStats.AttackState state)
     {
-        hitD.gameObject.GetComponent<WeaponStats>().currentState = state;
+        _weaponDamageTrigger.gameObject.GetComponent<WeaponStats>().currentState = state;
     }
 
     public void ResetAttackStates()
     {
-        animator.SetBool("ShouldGoNextCombo", false);
-        animator.SetBool("HeavyCombo", false);
-        animator.SetBool("AshOfWar", false);
-        canSwap.canSwitch= true;
-        
+        anim.SetBool("LightCombo", false);
+        anim.SetBool("HeavyCombo", false);
+        anim.SetBool("AshOfWar", false);
+        WaitForComboCooldown();
     }
 
-    public void RandomLightAttack()
+    public void PlayRandomAudio(AudioType state)
     {
-        source.clip = lightSwings[Random.Range(0, lightSwings.Length)];
-        source.Play();
-
+        AudioClip[] clips = _audioClipArrays[(int)state];
+        _audioSource.clip = clips[Random.Range(0, clips.Length)];
+        _audioSource.Play();
     }
 
-    public void RandomHeavyAttack()
+    public IEnumerator WaitForComboCooldown()
     {
-        source.clip = heavySwings[Random.Range(0, heavySwings.Length)];
-        source.Play();
+        _comboCooldown = true;
+        yield return new WaitForSeconds(0.8f);
+        _comboCooldown = false;
     }
 
 }

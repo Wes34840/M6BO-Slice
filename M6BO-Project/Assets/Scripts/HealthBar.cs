@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-
-    [SerializeField] private Slider healthSlider;
-    [SerializeField] private EntityStats healthStats;
+    [SerializeField] private Slider _healthSlider;
+    [SerializeField] private EntityStats _entityStats;
 
     private void Start()
     {
-        healthSlider.maxValue = healthStats.health;
+        _healthSlider.maxValue = _entityStats.health;
     }
 
     private void Update()
     {
-        healthSlider.value = healthStats.health;
+        _healthSlider.value = _entityStats.health;
     }
+
 }

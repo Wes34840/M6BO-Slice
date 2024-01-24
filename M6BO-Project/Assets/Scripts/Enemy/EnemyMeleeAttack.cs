@@ -3,31 +3,29 @@ using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
-    public bool cooldown;
-    public Animator anim;
-    public Rigidbody rb;
-    public EnemyFOV enemyFOV;
+    private bool _cooldown;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private EnemyFOV _enemyFOV;
     private void OnTriggerStay(Collider other)
     {
         if (other.transform == transform.parent) return;
 
-        if (other.CompareTag("HitBox") && !cooldown)
+        if (other.CompareTag("HitBox") && !_cooldown)
         {
-            anim.SetTrigger("Attack");
-            cooldown = true;
+            _anim.SetTrigger("Attack");
+            _cooldown = true;
             StartCoroutine(WaitForCooldown());
-            
         }
     }
 
     public void ResetAttack()
     {
-        anim.ResetTrigger("Attack");
+        _anim.ResetTrigger("Attack");
     }
 
     public IEnumerator WaitForCooldown()
     {
         yield return new WaitForSeconds(2);
-        cooldown = false;
+        _cooldown = false;
     }
 }

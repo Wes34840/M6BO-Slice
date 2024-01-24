@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5897741787804783661}
   - component: {fileID: 8519697382890545383}
   - component: {fileID: 8496799330490454138}
-  - component: {fileID: 8496799330490454139}
+  - component: {fileID: 1622914365779657358}
   - component: {fileID: 748931800}
   m_Layer: 0
   m_Name: Halberd
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   poiseDamage: 15
-  currentState: 0
---- !u!114 &8496799330490454139
+  currentState: 1
+--- !u!114 &1622914365779657358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +110,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7871438727160758578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07259d78140888a45a95fd0ed0157506, type: 3}
+  m_Script: {fileID: 11500000, guid: 993e0a4bb63601d42ae93dc48c2e8890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combo: {fileID: 0}
-  hits: []
+  _comboScript: {fileID: 0}
+  _hitSounds: []
 --- !u!64 &748931800
 MeshCollider:
   m_ObjectHideFlags: 0

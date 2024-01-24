@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  poiseDamage: 10
+  poiseDamage: 3
   currentState: 0
 --- !u!114 &-4960961371013867979
 MonoBehaviour:
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993e0a4bb63601d42ae93dc48c2e8890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hits: []
+  _comboScript: {fileID: 0}

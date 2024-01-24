@@ -6,31 +6,29 @@ public class EnemyFOV : MonoBehaviour
     public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
-    public LayerMask targetMask;
-    public LayerMask ObstacleMask;
-    
-
-    private void Start()
-    {
-       
-    }
+    [SerializeField] private LayerMask _targetMask;
+    [SerializeField] private LayerMask _obstacleMask;
     public Transform FindVisibleTargets()
     {
-        Collider[] targets = Physics.OverlapSphere(transform.position, viewRadius, targetMask); // looks for player in a sphere around it
+        // looks for player in a sphere around it
+        Collider[] targets = Physics.OverlapSphere(transform.position, viewRadius, _targetMask);
         if (targets.Length == 0) return null;
         Transform target = targets[0].transform;
-        Vector3 dirToTarget = (target.position - transform.position).normalized;
-        if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2) // checks if player is in view angle
+        Vector3 directionToTarget = (target.position - transform.position).normalized;
+        Debug.Log("target in sphere");
+
+        // checks if player is in view angle
+        if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
         {
             Debug.Log("player in angle");
-            
-            float distToTarget = Vector3.Distance(transform.position, target.position); // finds distance of player
-            if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, ObstacleMask)) // checks if there is an obstacle between the player and enemy
+
+            // finds distance of player
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+            // checks if there is an obstacle between the player and enemy
+            if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstacleMask))
             {
-                
-                Debug.Log("player in distance");
                 return targets[0].transform;
-                
             }
         }
         return null;
@@ -45,6 +43,5 @@ public class EnemyFOV : MonoBehaviour
         }
         return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), 0, Mathf.Cos(angle * Mathf.Deg2Rad));
     }
-
 
 }
