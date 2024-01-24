@@ -16,11 +16,11 @@ GameObject:
   - component: {fileID: 748931800}
   m_Layer: 0
   m_Name: Halberd
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7383413535295658888
 Transform:
   m_ObjectHideFlags: 0
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboScript: {fileID: 0}
-  _hitSounds: []
 --- !u!64 &748931800
 MeshCollider:
   m_ObjectHideFlags: 0
