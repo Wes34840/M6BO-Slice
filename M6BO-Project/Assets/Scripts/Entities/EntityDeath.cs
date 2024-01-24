@@ -19,7 +19,7 @@ public class EntityDeath : MonoBehaviour
     {
         if (_entityStats.health <= 0)
         {
-            _anim.SetBool("isDead", true);
+            _anim.SetBool("IsDead", true);
             if (_comboScript != null)
             {
                 _comboScript.enabled = false;
