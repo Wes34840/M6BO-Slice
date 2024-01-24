@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class ComboScript : MonoBehaviour
@@ -13,10 +14,12 @@ public class ComboScript : MonoBehaviour
     private List<AudioClip[]> _audioClipArrays = new List<AudioClip[]>();
     private AudioSource _audioSource;
     private Rigidbody _rb;
+    private bool _comboCooldown;
+
     public enum AudioType { Light, Heavy };
     void Start()
     {
-        anim = GetComponent<Animator>()
+        anim = GetComponent<Animator>();
         _weaponDamageTrigger = _switchWeapon.currentWeapon.GetComponent<TriggerDamage>();
         _playerMovement = GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
@@ -27,9 +30,7 @@ public class ComboScript : MonoBehaviour
 
     public void Attack(string animatorParameter)
     {
-        Debug.Log("Called");
-        if (isAttacking) return;
-        isAttacking = true;
+        if (isAttacking || _comboCooldown) return;
         _switchWeapon.canSwitch = false;
         if (_switchWeapon.currentWeapon == _switchWeapon.halberd)
         {
@@ -43,6 +44,7 @@ public class ComboScript : MonoBehaviour
     public void ToggleMovementLock(int i)
     {
         _rb.velocity = Vector3.zero;
+        Debug.Log(i);
         switch (i)
         {
             case 0:
@@ -54,6 +56,7 @@ public class ComboScript : MonoBehaviour
         }
 
     }
+
     public void AnimationStarted()
     {
         if (anim.GetBool("HeavyCombo")) SetAttackState(WeaponStats.AttackState.Heavy);
@@ -80,6 +83,7 @@ public class ComboScript : MonoBehaviour
         anim.SetBool("LightCombo", false);
         anim.SetBool("HeavyCombo", false);
         anim.SetBool("AshOfWar", false);
+        WaitForComboCooldown();
     }
 
     public void PlayRandomAudio(AudioType state)
@@ -87,6 +91,13 @@ public class ComboScript : MonoBehaviour
         AudioClip[] clips = _audioClipArrays[(int)state];
         _audioSource.clip = clips[Random.Range(0, clips.Length)];
         _audioSource.Play();
+    }
+
+    public IEnumerator WaitForComboCooldown()
+    {
+        _comboCooldown = true;
+        yield return new WaitForSeconds(0.8f);
+        _comboCooldown = false;
     }
 
 }
