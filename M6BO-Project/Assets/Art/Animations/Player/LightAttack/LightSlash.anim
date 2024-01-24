@@ -61365,7 +61365,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.9833333
+  - time: 1.75
     functionName: AttackingEnds
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -61377,5 +61377,5 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 1
+    intParameter: 0
     messageOptions: 0

@@ -796,6 +796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBlocking: 0
   isDodging: 0
+  _hitSound: {fileID: 0}
 --- !u!136 &935189777
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1728,6 +1729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   isAttacking: 0
+  _weaponDamageTrigger: {fileID: 0}
   _switchWeapon: {fileID: 1291735493}
   _lightSwings:
   - {fileID: 8300000, guid: 7f318a6e855320348840ee1d75febb4d, type: 3}
@@ -3588,6 +3590,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4535212311969835944}
     m_Modifications:
+    - target: {fileID: -1647871966068033618, guid: e22c255b225be9d4580a77ca2348de2e,
+        type: 3}
+      propertyPath: _comboScript
+      value: 
+      objectReference: {fileID: 7892294721207087341}
     - target: {fileID: 7514700999851272260, guid: e22c255b225be9d4580a77ca2348de2e,
         type: 3}
       propertyPath: combo
@@ -3704,6 +3711,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4535212311969835944}
     m_Modifications:
+    - target: {fileID: 1622914365779657358, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: _comboScript
+      value: 
+      objectReference: {fileID: 7892294721207087341}
     - target: {fileID: 7383413535295658888, guid: 82ac46676fd9d034eb8695aec3bacb87,
         type: 3}
       propertyPath: m_RootOrder
@@ -3789,7 +3801,13 @@ PrefabInstance:
       propertyPath: _comboScript
       value: 
       objectReference: {fileID: 7892294721207087341}
-    m_RemovedComponents: []
+    - target: {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87,
+        type: 3}
+      propertyPath: hits.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8496799330490454139, guid: 82ac46676fd9d034eb8695aec3bacb87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82ac46676fd9d034eb8695aec3bacb87, type: 3}
 --- !u!4 &1413451355576412630 stripped
 Transform:

@@ -35,4 +35,8 @@ public class EnemyParentAnimScript : MonoBehaviour
         _lungeScript.isLunging = false;
     }
 
+    public void DestroyEnemy()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }

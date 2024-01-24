@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 public class ComboScript : MonoBehaviour
 {
     public Animator anim;
     public bool isAttacking;
-    private HitDetection _hitDetection;
+    [SerializeField] private TriggerDamage _weaponDamageTrigger;
     [SerializeField] private SwitchWeapon _switchWeapon;
     private PlayerMovement _playerMovement;
     [SerializeField] private AudioClip[] _lightSwings;
@@ -14,11 +14,13 @@ public class ComboScript : MonoBehaviour
     private List<AudioClip[]> _audioClipArrays = new List<AudioClip[]>();
     private AudioSource _audioSource;
     private Rigidbody _rb;
+    private bool _comboCooldown;
+
     public enum AudioType { Light, Heavy };
     void Start()
     {
         anim = GetComponent<Animator>();
-        _hitDetection = GetComponentInChildren<HitDetection>();
+        _weaponDamageTrigger = _switchWeapon.currentWeapon.GetComponent<TriggerDamage>();
         _playerMovement = GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
         _audioClipArrays.Add(_lightSwings);
@@ -28,9 +30,8 @@ public class ComboScript : MonoBehaviour
 
     public void Attack(string animatorParameter)
     {
-        Debug.Log("Called");
-        if (isAttacking) return;
-        isAttacking = true;
+        if (isAttacking || _comboCooldown) return;
+        _switchWeapon.canSwitch = false;
         if (_switchWeapon.currentWeapon == _switchWeapon.halberd)
         {
             anim.SetBool(animatorParameter, true);
@@ -43,6 +44,7 @@ public class ComboScript : MonoBehaviour
     public void ToggleMovementLock(int i)
     {
         _rb.velocity = Vector3.zero;
+        Debug.Log(i);
         switch (i)
         {
             case 0:
@@ -62,19 +64,18 @@ public class ComboScript : MonoBehaviour
         else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
         ResetAttackStates();
-        _switchWeapon.canSwitch = false;
     }
 
     public void AttackingEnds()
     {
         isAttacking = false;
-        _hitDetection.hits.Clear();
+        _weaponDamageTrigger.ClearHits();
         _switchWeapon.canSwitch = true;
     }
 
     public void SetAttackState(WeaponStats.AttackState state)
     {
-        _hitDetection.gameObject.GetComponent<WeaponStats>().currentState = state;
+        _weaponDamageTrigger.gameObject.GetComponent<WeaponStats>().currentState = state;
     }
 
     public void ResetAttackStates()
@@ -82,6 +83,7 @@ public class ComboScript : MonoBehaviour
         anim.SetBool("LightCombo", false);
         anim.SetBool("HeavyCombo", false);
         anim.SetBool("AshOfWar", false);
+        WaitForComboCooldown();
     }
 
     public void PlayRandomAudio(AudioType state)
@@ -89,6 +91,13 @@ public class ComboScript : MonoBehaviour
         AudioClip[] clips = _audioClipArrays[(int)state];
         _audioSource.clip = clips[Random.Range(0, clips.Length)];
         _audioSource.Play();
+    }
+
+    public IEnumerator WaitForComboCooldown()
+    {
+        _comboCooldown = true;
+        yield return new WaitForSeconds(0.8f);
+        _comboCooldown = false;
     }
 
 }
