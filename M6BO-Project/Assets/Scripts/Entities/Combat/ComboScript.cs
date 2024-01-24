@@ -16,6 +16,7 @@ public class ComboScript : MonoBehaviour
         animator = GetComponent<Animator>();
         hitD = GetComponentInChildren<HitDetection>();
         source = GetComponent<AudioSource>();
+        canSwap.canSwitch = true;
 
     }
 
@@ -50,13 +51,14 @@ public class ComboScript : MonoBehaviour
         else SetAttackState(WeaponStats.AttackState.Light);
         isAttacking = true;
         ResetAttackStates();
-        canSwap.canSwitch = false;
+        canSwap.canSwitch= false;
+        
     }
     public void AttackingEnds()
     {
         isAttacking = false;
         hitD.hits.Clear();
-        canSwap.canSwitch = true;
+       canSwap.canSwitch= true;
     }
 
     public void SetAttackState(WeaponStats.AttackState state)
@@ -69,6 +71,8 @@ public class ComboScript : MonoBehaviour
         animator.SetBool("ShouldGoNextCombo", false);
         animator.SetBool("HeavyCombo", false);
         animator.SetBool("AshOfWar", false);
+        canSwap.canSwitch= true;
+        
     }
 
     public void RandomLightAttack()
