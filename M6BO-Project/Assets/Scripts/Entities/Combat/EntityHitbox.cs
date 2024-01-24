@@ -6,17 +6,22 @@ public class EntityHitbox : MonoBehaviour
     private EntityPoise _poiseScript;
     public bool isBlocking;
     public bool isDodging;
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _hitSound;
+    private void Start()
+    {
+        _entityStats = GetComponentInParent<EntityStats>();
+        _poiseScript = GetComponentInParent<EntityPoise>();
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     public void TakeDamage(WeaponStats weapon)
     {
-        PlayAudio();
-
         transform.parent.TryGetComponent(out PathingAI path);
         if (path != null) path.TryWakeUp();
         if (isDodging) return;
         float damage = CalculateDamage(weapon);
         float poiseDamage = CalculatePoise(weapon);
-        Debug.Log("Triggered Damage");
         if (isBlocking)
         {
             _entityStats.health -= damage * (_entityStats.blockingPower / 10);
@@ -27,15 +32,14 @@ public class EntityHitbox : MonoBehaviour
         {
             _entityStats.health -= damage;
             _poiseScript.currentPoise -= poiseDamage;
-            Debug.Log(damage);
-            Debug.Log(poiseDamage);
         }
 
+        PlayAudio();
     }
 
     public void PlayAudio()
     {
-
+        _audioSource.PlayOneShot(_hitSound, _audioSource.volume);
     }
 
     public float CalculateDamage(WeaponStats weapon)
@@ -44,6 +48,7 @@ public class EntityHitbox : MonoBehaviour
         Debug.Log(weapon.currentState);
         return weapon.damage * (int)weapon.currentState;
     }
+
     // this feels extremely unnecessary 
     public float CalculatePoise(WeaponStats weapon)
     {
