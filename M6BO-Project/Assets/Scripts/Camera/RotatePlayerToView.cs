@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class RotatePlayerToView : MonoBehaviour
 {
-    [SerializeField] private Transform _cam;
-    [SerializeField] private PlayerMovement _movement;
-    // Update is called once per frame
+    private Transform _cam;
+    private PlayerMovement _movement;
+
+    private void Start()
+    {
+        _cam = Camera.main.transform;
+        _movement = GetComponent<PlayerMovement>();
+    }
+
     void Update()
     {
         if (_movement.canMove) transform.rotation = UpdateDirection(_cam.position);

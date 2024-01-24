@@ -3,7 +3,12 @@ guid: 46f1cec118743ce458a54dd190c2e894
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: enemy_eldenring
+    second: {fileID: 2100000, guid: e73a344e519e33244a2596f669172754, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
