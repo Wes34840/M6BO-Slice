@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboScript: {fileID: 0}
+  hits: []
 --- !u!64 &693005832
 MeshCollider:
   m_ObjectHideFlags: 0

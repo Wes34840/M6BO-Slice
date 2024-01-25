@@ -34,8 +34,6 @@ public class EntityHitbox : MonoBehaviour
             _poiseScript.currentPoise -= poiseDamage;
         }
 
-        Debug.Log(weapon.gameObject.name);
-
         PlayAudio();
     }
 

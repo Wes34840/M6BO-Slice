@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class KillBarrier : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        SceneManager.LoadScene("GameOver");
+        collision.collider.gameObject.GetComponent<EntityHitbox>().TakeDamage(GetComponent<WeaponStats>());
     }
 }
