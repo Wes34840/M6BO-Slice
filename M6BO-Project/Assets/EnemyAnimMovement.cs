@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAnimMovement : MonoBehaviour
 {
-    private Animator anim;
+    private Animator _anim;
+    private NavMeshAgent _agent;
+
     void Start()
     {
-        anim = GetComponent<Animator>();   
+        _anim = GetComponent<Animator>();
+        _agent = GetComponentInParent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        _anim.SetBool("Walking", !_agent.isStopped);
     }
 }

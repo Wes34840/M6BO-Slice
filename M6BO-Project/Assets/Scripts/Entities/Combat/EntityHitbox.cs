@@ -34,6 +34,8 @@ public class EntityHitbox : MonoBehaviour
             _poiseScript.currentPoise -= poiseDamage;
         }
 
+        Debug.Log(weapon.gameObject.name);
+
         PlayAudio();
     }
 
@@ -44,8 +46,6 @@ public class EntityHitbox : MonoBehaviour
 
     public float CalculateDamage(WeaponStats weapon)
     {
-        Debug.Log(weapon.damage);
-        Debug.Log(weapon.currentState);
         return weapon.damage * (int)weapon.currentState;
     }
 

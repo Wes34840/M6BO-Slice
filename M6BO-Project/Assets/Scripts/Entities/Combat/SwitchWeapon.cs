@@ -8,7 +8,7 @@ public class SwitchWeapon : MonoBehaviour
     public GameObject halberd;
     public GameObject sword;
     public GameObject currentWeapon;
-    public bool canSwitch;
+    public bool canSwitch = true;
     private float delay = 0.5f;
 
     private void Start()
