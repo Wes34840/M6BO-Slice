@@ -6,7 +6,7 @@ public class ComboScript : MonoBehaviour
 {
     public Animator anim;
     public bool isAttacking;
-    private TriggerDamage _weaponDamageTrigger;
+    [SerializeField] private TriggerDamage _weaponDamageTrigger;
     [SerializeField] private SwitchWeapon _switchWeapon;
     private PlayerMovement _playerMovement;
     [SerializeField] private AudioClip[] _lightSwings;
