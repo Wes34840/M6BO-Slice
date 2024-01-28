@@ -2739,16 +2739,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26767ca72d2629b40960ef5c878bd394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitD: {fileID: 0}
-  canSwap: {fileID: 0}
-  playerMovement: {fileID: 4338877223336079627}
-  lightSwings:
-  - {fileID: 8300000, guid: 7f318a6e855320348840ee1d75febb4d, type: 3}
-  - {fileID: 8300000, guid: 4db9e40ad5f17ea4589055bcc6f1fb79, type: 3}
-  - {fileID: 8300000, guid: ea4a7db68b0a2ef4c9c0b0eccad4158d, type: 3}
-  heavySwings:
-  - {fileID: 8300000, guid: e97e3c9c62f16924f9e619e0cc01b2c2, type: 3}
-  - {fileID: 8300000, guid: 05a46ae50e7daa44a92da0949adaad91, type: 3}
+  anim: {fileID: 0}
+  isAttacking: 0
+  _weaponDamageTrigger: {fileID: 0}
+  _switchWeapon: {fileID: 0}
+  _lightSwings: []
+  _heavySwings:
   - {fileID: 8300000, guid: 02589aaf71fc22d4eb658953cb959a94, type: 3}
 --- !u!95 &4338877224775831801
 Animator:
@@ -2798,9 +2794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a706267c86525444a9047eae499175d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   maxPoise: 10
-  initialStun: 0
 --- !u!114 &8720106174426654886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,9 +2807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8b4b037414955498803c07b0610e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitboxScript: {fileID: 455695305960366120}
-  anim: {fileID: 0}
-  canBlock: 0
 --- !u!114 &4338877223336079626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2828,8 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58318643bd79e7543aed65c1e13ac287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  combo: {fileID: 0}
+  _anim: {fileID: 0}
 --- !u!114 &4338877223336079627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,7 +2833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingClip: {fileID: 8300000, guid: 1d50fc7a7f9cc5647a8444d5db7c3c56, type: 3}
-  inputDir: {x: 0, y: 0, z: 0}
+  inputDirection: {x: 0, y: 0, z: 0}
   canMove: 1
 --- !u!114 &2891845465789910214
 MonoBehaviour:
@@ -3040,8 +3030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab6aec99ff747a49a1a66dbfad489ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  movement: {fileID: 4338877223336079627}
 --- !u!114 &3708071286467316795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,7 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74636a25980ccfa40ab8d371a84d24af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollForce: 4
+  _rollForce: 0
 --- !u!82 &4785797948043795772
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9411,8 +9399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe92c7b01d619247b5ed055fcb5283e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 2891845465660816879}
-  healthStats: {fileID: 4338877223336079665}
+  _healthSlider: {fileID: 0}
+  _entityStats: {fileID: 0}
 --- !u!1 &2891845465697206226
 GameObject:
   m_ObjectHideFlags: 0
@@ -9947,10 +9935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba94aa639101d646a9facf142dcbbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 4338877223336079665}
-  poise: {fileID: 8933658544800302185}
   isBlocking: 0
   isDodging: 0
+  _hitSound: {fileID: 0}
 --- !u!136 &2891845466052831999
 CapsuleCollider:
   m_ObjectHideFlags: 0
