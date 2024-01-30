@@ -20,7 +20,7 @@ public class SwitchWeapon : MonoBehaviour
     public void OnSwitch(InputAction.CallbackContext ctx)
     {
         float input = ctx.ReadValue<float>();
-        if (!canSwitch) return;
+        if (!canSwitch || _anim.GetBool("isBlocking")) return;
         switch (input)
         {
             case -1:
