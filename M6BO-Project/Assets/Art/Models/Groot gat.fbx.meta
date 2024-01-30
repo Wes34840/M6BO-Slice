@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:M6BO-Project/Assets/Art/Models/Groot gat.fbx.meta
 guid: 6ad2a054b5c6cbf4e85e0e8f18dece31
+========
+guid: 6a349d82e4ca63742bebbad9a58cbd32
+>>>>>>>> Enviroment-:M6BO-Project/Assets/art_joshua/enemy_unfinisht.fbx.meta
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
