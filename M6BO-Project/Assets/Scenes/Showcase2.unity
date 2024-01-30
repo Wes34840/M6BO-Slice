@@ -583,7 +583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 859957597}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -2.909, z: 90}
 --- !u!23 &45941842
 MeshRenderer:
@@ -3515,7 +3515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 859957597}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 177.091, z: 90}
 --- !u!23 &495886552
 MeshRenderer:
@@ -6664,13 +6664,13 @@ Transform:
   - {fileID: 6028511}
   - {fileID: 550997254}
   - {fileID: 523021406}
+  - {fileID: 45941841}
   - {fileID: 2047147224}
   - {fileID: 2123681284178844501}
   - {fileID: 426762131}
-  - {fileID: 45941841}
+  - {fileID: 495886551}
   - {fileID: 2110984991}
   - {fileID: 1383319790}
-  - {fileID: 495886551}
   - {fileID: 421253039}
   - {fileID: 1793003074}
   - {fileID: 1195922005}
@@ -10161,6 +10161,12 @@ Transform:
   m_Father: {fileID: 2146857899}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1295105716 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 1816704968855142690, guid: 2c8cbe7973af97343b9e10139012d4db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2135612138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1299472289
 GameObject:
   m_ObjectHideFlags: 0
@@ -16207,25 +16213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 669726079, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 669726079, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1115021573, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
-      propertyPath: m_LocalScale.x
+    - target: {fileID: 2000231575966085491, guid: 2c8cbe7973af97343b9e10139012d4db,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641248662, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641248662, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2523232819522121482, guid: 2c8cbe7973af97343b9e10139012d4db,
         type: 3}
@@ -16287,6 +16278,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8959951458080342884, guid: 2c8cbe7973af97343b9e10139012d4db,
+        type: 3}
+      propertyPath: m_SphereColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959951458080342884, guid: 2c8cbe7973af97343b9e10139012d4db,
+        type: 3}
+      propertyPath: m_SphereColliders.Array.data[0].first
+      value: 
+      objectReference: {fileID: 1295105716}
+    - target: {fileID: 8959951458080342884, guid: 2c8cbe7973af97343b9e10139012d4db,
+        type: 3}
+      propertyPath: m_SphereColliders.Array.data[0].second
+      value: 
+      objectReference: {fileID: 1295105716}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c8cbe7973af97343b9e10139012d4db, type: 3}
 --- !u!4 &2135612139 stripped
@@ -16526,7 +16532,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106516174668918765}
-  m_LocalRotation: {x: 0.26561782, y: 0.58810544, z: -0.21292332, w: 0.7336504}
+  m_LocalRotation: {x: 0.26561782, y: 0.5881054, z: -0.21292332, w: 0.7336504}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
