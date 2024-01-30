@@ -22,6 +22,7 @@ public class EntityDeath : MonoBehaviour
             _anim.SetBool("IsDead", true);
             if (_comboScript != null)
             {
+                GetComponent<PlayerMovement>().canMove = false;
                 _comboScript.enabled = false;
                 StartCoroutine(WaitForDelay());
             }

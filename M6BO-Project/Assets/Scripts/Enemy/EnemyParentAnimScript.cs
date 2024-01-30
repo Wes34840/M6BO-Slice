@@ -35,8 +35,12 @@ public class EnemyParentAnimScript : MonoBehaviour
         _lungeScript.isLunging = false;
     }
 
-    public void DestroyEnemy()
+    public void InitDeath()
     {
-        Destroy(transform.parent.gameObject);
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponentInParent<NavMeshAgent>().isStopped = true;
+        GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        transform.GetChild(3).gameObject.SetActive(false);
     }
+
 }
