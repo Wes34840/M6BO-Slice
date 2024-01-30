@@ -44,7 +44,6 @@ public class ComboScript : MonoBehaviour
     public void ToggleMovementLock(int i)
     {
         _rb.velocity = Vector3.zero;
-        Debug.Log(i);
         switch (i)
         {
             case 0:
