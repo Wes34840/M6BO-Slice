@@ -4,35 +4,39 @@ using UnityEngine.AI;
 public class EnemyParentAnimScript : MonoBehaviour
 {
     // this is painful but the only way I found to have the enemy rotate towards the target
-    private NavMeshAgent agent;
-    private BasicEnemyLunge lungeScript;
+    private NavMeshAgent _agent;
+    private BasicEnemyLunge _lungeScript;
     void Start()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
-        lungeScript = GetComponentInParent<BasicEnemyLunge>();
+        _agent = GetComponentInParent<NavMeshAgent>();
+        _lungeScript = GetComponentInParent<BasicEnemyLunge>();
     }
 
     public void StopAgent()
     {
-        agent.isStopped = true;
+        _agent.isStopped = true;
     }
 
     public void StartAgent()
     {
-        agent.isStopped = false;
+        _agent.isStopped = false;
     }
 
     public void StartLunge()
     {
-        Vector3 dir = (agent.steeringTarget - transform.position).normalized;
-        lungeScript.GetLungeDirection(dir);
+        Vector3 direction = (_agent.steeringTarget - transform.position).normalized;
+        _lungeScript.GetLungeDirection(direction);
 
-        lungeScript.isLunging = true;
+        _lungeScript.isLunging = true;
     }
 
     public void EndLunge()
     {
-        lungeScript.isLunging = false;
+        _lungeScript.isLunging = false;
     }
 
+    public void DestroyEnemy()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }

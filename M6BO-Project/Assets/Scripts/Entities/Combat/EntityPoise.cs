@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EntityPoise : MonoBehaviour
 {
-    public Animator anim;
+    private Animator _anim;
     public float maxPoise;
-    private float currentPoise;
-    public bool initialStun;
-    public float CurrentPoise
+    private float _currentPoise;
+    private bool _initialStun;
+
+    public float currentPoise
     {
         get
         {
-            return currentPoise;
+            return _currentPoise;
         }
         set
         {
-            if (currentPoise == value) return;
-            currentPoise = value;
-            if (OnVariableChange != null)
-                OnVariableChange(currentPoise);
+            if (_currentPoise == value) return;
+            _currentPoise = value;
+            if (OnVariableChange != null) OnVariableChange(_currentPoise);
         }
     }
     public delegate void OnVariableChangeDelegate(float newVal);
@@ -28,14 +28,15 @@ public class EntityPoise : MonoBehaviour
     void Start()
     {
         OnVariableChange = PoiseChanged;
-        CurrentPoise = maxPoise;
-        TryGetComponent(out anim);
-        if (anim == null) anim = GetComponentInChildren<Animator>();
+        currentPoise = maxPoise;
+        TryGetComponent(out _anim);
+        if (_anim == null) _anim = GetComponentInChildren<Animator>();
     }
+
     private void Update()
     {
-        if (CurrentPoise < maxPoise && !initialStun) CurrentPoise += Time.deltaTime * 0.7f;
-        if (CurrentPoise > maxPoise) CurrentPoise = maxPoise;
+        if (currentPoise < maxPoise && !_initialStun) currentPoise += Time.deltaTime * 0.7f;
+        if (currentPoise > maxPoise) currentPoise = maxPoise;
     }
 
     public void PoiseChanged(float currentPoise)
@@ -45,28 +46,29 @@ public class EntityPoise : MonoBehaviour
 
     public void StunEntity()
     {
-        anim.SetTrigger("Stun");
-        AnimationClip stunClip = anim.runtimeAnimatorController.animationClips.First(i => i.name == "Stun");
+        _anim.SetTrigger("Stun");
+        AnimationClip stunClip = _anim.runtimeAnimatorController.animationClips.First(i => i.name == "Stun");
         StartCoroutine(WaitForDuration(stunClip.length));
-        TryGetComponent(out PlayerMovement movement);
-        if (movement != null) StartCoroutine(movement.LockMovement(stunClip.length));
     }
 
     public void ResetPoise()
     {
-        CurrentPoise = maxPoise;
+        currentPoise = maxPoise;
+        Debug.Log(currentPoise);
     }
 
     private IEnumerator WaitForDuration(float duration)
     {
         yield return new WaitForSeconds(duration);
         ResetPoise();
-        anim.ResetTrigger("Stun");
+        _anim.ResetTrigger("Stun");
     }
+
     public IEnumerator RegenDelay()
     {
-        initialStun = true;
+        _initialStun = true;
         yield return new WaitForSeconds(0.5f);
-        initialStun = false;
+        _initialStun = false;
     }
+
 }

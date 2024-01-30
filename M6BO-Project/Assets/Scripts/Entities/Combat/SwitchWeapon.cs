@@ -4,17 +4,17 @@ using UnityEngine.InputSystem;
 
 public class SwitchWeapon : MonoBehaviour
 {
-    public Animator anim;
+    [SerializeField] private Animator _anim;
     public GameObject halberd;
     public GameObject sword;
     public GameObject currentWeapon;
     public bool canSwitch;
-    private float delay;
-
+    private float delay = 0.5f;
 
     private void Start()
     {
-        anim = GetComponentInParent<Animator>();
+        _anim = GetComponentInParent<Animator>();
+        currentWeapon = transform.GetChild(0).gameObject;
     }
 
     public void OnSwitch(InputAction.CallbackContext ctx)
@@ -24,39 +24,31 @@ public class SwitchWeapon : MonoBehaviour
         switch (input)
         {
             case -1:
-                SwitchToHalberd();
+                SwitchTo(halberd, sword, 1, 0);
                 break;
             case 1:
-                SwitchToSword();
+                SwitchTo(sword, halberd, 0, 1);
                 break;
         }
     }
 
-    public void SwitchToHalberd()
+    public void SwitchTo(GameObject weapon1, GameObject weapon2, int top, int bottom)
     {
-        halberd.SetActive(true);
-        sword.SetActive(false);
-        currentWeapon = halberd;
-        SwitchLayers(1, 0);
-    }
-
-    public void SwitchToSword()
-    {
-        halberd.SetActive(false);
-        sword.SetActive(true);
-        currentWeapon = sword;
-        SwitchLayers(0, 1);
+        weapon1.SetActive(true);
+        weapon2.SetActive(false);
+        currentWeapon = weapon1;
+        SwitchLayers(top, bottom);
     }
 
     public void SwitchLayers(int top, int bottom)
     {
-        anim.SetLayerWeight(top, 1);
-        anim.SetLayerWeight(bottom, 0);
+        _anim.SetLayerWeight(top, 1);
+        _anim.SetLayerWeight(bottom, 0);
     }
 
     public IEnumerator SwitchDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
     }
 
 }
