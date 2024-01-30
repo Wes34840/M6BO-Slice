@@ -43,7 +43,7 @@ public class ComboScript : MonoBehaviour
 
     public void ToggleMovementLock(int i)
     {
-        _rb.velocity = Vector3.zero;
+        _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
         switch (i)
         {
             case 0:
